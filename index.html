@@ -8,10 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body
-    class="bg-gradient-to-r from-gray-100 to-gray-300 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
-    <main
-        class="max-w-4xl mx-auto py-16 px-5 flex flex-col md:flex-row items-center justify-center text-center md:text-left space-y-6 md:space-y-0 md:space-x-12">
+<body class="bg-gradient-to-r from-gray-100 to-gray-300 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+    <main class="w-full mx-auto py-16 px-5 flex flex-col md:flex-row items-center justify-center text-center md:text-left space-y-6 md:space-y-0 md:space-x-12">
 
         <!-- lang -->
         <section class="absolute top-5 right-5">
@@ -24,15 +22,12 @@
 
         <div class="flex flex-col space-y-16">
             <!-- Presentation -->
-            <section id="presentation" class="flex flex-col md:flex-row items-center justify-center md:space-x-12">
+            <section id="presentation" class="flex flex-col mx-auto max-w-4xl md:flex-row items-center justify-center md:space-x-12 ">
                 <div class="flex-1 md:flex-grow text-center md:text-left">
                     <h1 class="text-5xl font-bold whitespace-nowrap">Iván Pérez Talavera</h1>
-                    <p class="text-gray-600 dark:text-gray-300 text-2xl mt-3">Full-Stack Developer | Java | Vue.js | AEM
-                    </p>
-                    <blockquote
+                    <p class="text-gray-600 dark:text-gray-300 text-2xl mt-3">Full-Stack Developer | Java | Vue.js | AEM</p>
+                    <blockquote id="quote"
                         class="text-lg italic text-gray-700 dark:text-gray-300 border-l-4 border-blue-500 pl-4 mt-4">
-                        "Soy un desarrollador Full Stack con experiencia en integración tecnológica, migración de código
-                        y desarrollo de sistemas empresariales."
                     </blockquote>
 
                     <div class="flex justify-center md:justify-start space-x-6 mt-4 text-xl">
@@ -54,7 +49,6 @@
                             <span class="relative z-10 text-sm font-medium pl-2">LinkedIn</span>
                         </a>
 
-
                         <!-- CV -->
                         <a class="group relative inline-flex items-center overflow-hidden rounded-sm bg-indigo-600 px-4 py-2 text-white shadow-lg focus:ring-3 focus:outline-hidden"
                             href="IVAN_PEREZ_TALAVERA_ESP.pdf" download>
@@ -65,12 +59,13 @@
                                         d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </span>
-                            <span class="text-sm font-medium transition-all group-hover:ms-4 pl-2" id="cv-button">
-                                Descargar CV </span>
+                            <span class="text-sm font-medium transition-all group-hover:ms-4 pl-2"
+                                id="cv-button"></span>
                         </a>
                     </div>
                 </div>
 
+                <!--Profile pic-->
                 <div class="flex-none mt-8 md:mt-0">
                     <img class="h-56 w-56 rounded-full object-cover mx-auto shadow-xl" src="pp.jpg"
                         alt="Profile picture" />
@@ -78,19 +73,25 @@
             </section>
 
             <!-- About me -->
-            <section id="about-me" class="text-center md:text-left">
-                <h2 class="text-4xl font-bold">Sobre mí</h2>
-                <p class="mt-4 text-lg text-gray-600 dark:text-gray-300">Soy un desarrollador apasionado por la
-                    programación,
-                    la innovación tecnológica y el desarrollo web. Con experiencia en tecnologías como Java, Spring
-                    Boot, Vue.js
-                    y AEM, busco seguir aprendiendo y enfrentarme a nuevos retos.</p>
+            <section id="about-me"
+                class="relative bg-cover bg-center bg-no-repeat rounded-lg overflow-hidden p-8 md:p-12 mt-10 w-full mx-auto text-left">
+                <div class="absolute inset-0 bg-black/50 backdrop-blur-md"></div>
+                <div class="relative z-10 flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-10">
+                    <div class="w-full md:w-4/12 flex justify-center">
+                        <img class="w-auto h-auto aspect-[9/16] shadow-lg object-cover" src="pp.jpg" alt="Profile picture" />
+                    </div>
+                    <div class="w-full md:w-8/12">
+                        <h2 id="about-title" class="text-2xl md:text-3xl font-bold text-white">Sobre mí</h2>
+                        <p id="about-text" class="mt-4 text-sm md:text-base text-gray-300">
+                            Tras casi un año trabajando como Full-Stack Developer, en 2024 decidí dar un giro a mi vida y solicitar una Working Holiday Visa para Australia, buscando nuevas experiencias tanto personales como profesionales...
+                        </p>
+                    </div>
+                </div>
             </section>
         </div>
-
     </main>
+    <script src="dictionary.js"></script>
     <script src="script.js"></script>
 </body>
-
 
 </html>
