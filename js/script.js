@@ -19,6 +19,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         prevButton.addEventListener("click", () => changeProjectFromArrow(-1));
         nextButton.addEventListener("click", () => changeProjectFromArrow(1));
+
+        
     } catch (error) {
         console.error("Error al cargar los proyectos:", error);
     }
@@ -95,8 +97,8 @@ function changeProjectTo(index) {
     let indicators = document.querySelectorAll(".indicator");
     let carouselItems = document.querySelectorAll("#carousel-items > div");
 
-    const direction = index > currentProjectIndex ? "right" : "left";
-
+    if (index === currentProjectIndex) return;
+    
     carouselItems[currentProjectIndex].style.opacity = "0";
     carouselItems[currentProjectIndex].style.pointerEvents = "none"; 
     indicators[currentProjectIndex].classList.remove("opacity-100");
@@ -133,8 +135,8 @@ function createCarouselItems(projects) {
 
         const img = document.createElement("img");
         img.src = project.thumbnail;
-        img.alt = `Slide ${index + 1}`;
-        img.classList.add("block", "w-full");
+        img.alt = project.title;
+        img.classList.add("block", "w-full", "h-[600px]", "object-cover");
         item.appendChild(img);
 
         const content = document.createElement("div");
