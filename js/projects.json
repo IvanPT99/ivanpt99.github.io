@@ -1,0 +1,62 @@
+[
+    {
+        "title": "Soulsdle",
+        "description": "Soulsdle es un minijuego web inspirado en Wordle con tematica de la saga Souls. ",
+        "tecnologias": [
+            "Vue.js",
+            "Vuex",
+            "Typescript",
+            "PHP",
+            "Laravel"
+        ],
+        "thumbnail": "media/project2.png",
+        "imagenes": [
+            "soulsdle-1.jpg",
+            "soulsdle-2.jpg",
+            "soulsdle-3.jpg"
+        ],
+        "codigo": [
+            {
+                "front-end": "frontend"
+            },
+            {
+                "back-end": "backend"
+            }
+        ]
+    },
+    {
+        "title": "Offibay",
+        "description": "EMS para la gestión de proyectos, empleados, facturas, presupuestos, clientes, etc.",
+        "tecnologias": [
+            "Vue.js",
+            "Vuex",
+            "Nuxt.js",
+            "Java",
+            "Spring Boot",
+            "Hibernate"
+        ],
+        "thumbnail": "media/project1.png",
+        "imagenes": [
+            "gestor-facturas-1.jpg",
+            "gestor-facturas-2.jpg"
+        ],
+        "codigo": "https://github.com/ivan/gestor-facturas",
+        "website": "https://facturas.empresa.com"
+    },
+    {
+        "proyecto": "Discord Bot AI",
+        "descripcion": "Bot para Discord basado en inteligencia artificial que interactúa con los usuarios, responde preguntas y proporciona asistencia en tiempo real utilizando la API de OpenAI.",
+        "tecnologias": [
+            "Node.js",
+            "Discord.js",
+            "OpenAI API"
+        ],
+        "thumbnail": "discord-bot-thumbnail.jpg",
+        "imagenes": [
+            "discord-bot-1.jpg",
+            "discord-bot-2.jpg"
+        ],
+        "codigo": "https://github.com/ivan/discord-bot-ai",
+        "website": "https://discord-bot-ai.com"
+    }
+]

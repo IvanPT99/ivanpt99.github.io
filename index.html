@@ -8,7 +8,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gradient-to-r from-gray-100 to-gray-300 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
+<body
+    class="bg-gradient-to-r from-gray-100 to-gray-300 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white">
     <main class="w-full mx-auto py-16 px-5 flex flex-col items-center justify-center text-center space-y-6">
 
         <!-- lang -->
@@ -22,10 +23,12 @@
 
         <div class="flex flex-col space-y-16 w-full">
             <!-- Presentation -->
-            <section id="presentation" class="flex flex-col mx-auto w-full max-w-full md:max-w-4xl items-center justify-center md:flex-row md:space-x-12">
+            <section id="presentation"
+                class="flex flex-col mx-auto w-full max-w-full md:max-w-4xl items-center justify-center md:flex-row md:space-x-12">
                 <div class="flex-1 text-center md:text-left">
                     <h1 class="text-4xl md:text-5xl font-bold whitespace-nowrap break-words">Iván Pérez Talavera</h1>
-                    <p class="text-gray-600 dark:text-gray-300 text-xl md:text-2xl mt-3 break-words">Full-Stack Developer | Java | Vue.js | AEM</p>
+                    <p class="text-gray-600 dark:text-gray-300 text-xl md:text-2xl mt-3 break-words">Full-Stack
+                        Developer | Java | Vue.js | AEM</p>
                     <blockquote id="quote"
                         class="text-lg italic text-gray-700 dark:text-gray-300 border-l-4 border-blue-500 pl-4 mt-4 break-words">
                     </blockquote>
@@ -67,8 +70,8 @@
 
                 <!--Profile pic-->
                 <div class="flex-none mt-8 md:mt-0">
-                    <img class="h-40 w-40 md:h-56 md:w-56 rounded-full object-cover mx-auto shadow-xl" src="media/pp.jpg"
-                        alt="Profile picture" />
+                    <img class="h-40 w-40 md:h-56 md:w-56 rounded-full object-cover mx-auto shadow-xl"
+                        src="media/pp.jpg" alt="Profile picture" />
                 </div>
             </section>
 
@@ -78,22 +81,66 @@
                 <div class="absolute inset-0 bg-black/50 backdrop-blur-md"></div>
                 <div class="relative z-10 flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-10">
                     <div class="w-full md:w-4/12 flex justify-center">
-                        <img class="w-auto h-auto aspect-[9/16] shadow-lg object-cover" src="media/pp.jpg" alt="Profile picture" />
+                        <img class="w-auto h-auto aspect-[9/16] shadow-lg object-cover" src="media/pp.jpg"
+                            alt="Profile picture" />
                     </div>
                     <div class="w-full md:w-8/12">
                         <h2 id="about-title" class="text-2xl md:text-3xl font-bold text-white">Sobre mí</h2>
                         <p id="about-text" class="mt-4 text-sm md:text-base text-gray-300 break-words">
-                            Tras casi un año trabajando como Full-Stack Developer, en 2024 decidí dar un giro a mi vida y solicitar una Working Holiday Visa para Australia, buscando nuevas experiencias tanto personales como profesionales...
+                            Tras casi un año trabajando como Full-Stack Developer, en 2024 decidí dar un giro a mi vida
+                            y solicitar una Working Holiday Visa para Australia, buscando nuevas experiencias tanto
+                            personales como profesionales...
                         </p>
                     </div>
                 </div>
             </section>
-
+            <section id="projects-title">
+                <h2 id="about-title" class="text-2xl md:text-3xl font-bold text-white">Proyectos</h2>
+            </section>
             
+            <section id="projects">
+                <div id="projects-carousel" class="relative w-10/12 mx-auto">            
+                    <!--Carousel indicators-->
+                    <div class="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
+                        id="carousel-indicators">
+                    </div>
+
+                    <!--Carousel items-->
+                    <div id="carousel-items" class="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
+                
+
+                    <!--Carousel controls - prev item-->
+                    <button
+                        class="absolute bottom-0 left-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                        type="button" id="carousel-prev">
+                        <span class="inline-block h-8 w-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="h-6 w-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                            </svg>
+                        </span>
+                        <span
+                            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Previous</span>
+                    </button>
+                    <!--Carousel controls - next item-->
+                    <button
+                        class="absolute bottom-0 right-0 top-0 z-[1] flex w-[15%] items-center justify-center border-0 bg-none p-0 text-center text-white opacity-50 transition-opacity duration-150 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] hover:text-white hover:no-underline hover:opacity-90 hover:outline-none focus:text-white focus:no-underline focus:opacity-90 focus:outline-none motion-reduce:transition-none"
+                        type="button" id="carousel-next">
+                        <span class="inline-block h-8 w-8">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="h-6 w-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                            </svg>
+                        </span>
+                        <span
+                            class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Next</span>
+                    </button>
+                </div>
+            </section>
         </div>
     </main>
     <script src="js/dictionary.js"></script>
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
 </body>
 
 </html>
