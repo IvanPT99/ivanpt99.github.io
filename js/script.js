@@ -9,18 +9,31 @@ document.addEventListener("DOMContentLoaded", async function () {
     try {
         const response = await fetch("js/projects.json");
         const projects = await response.json();
-        createCarouselItems(projects);
 
-        window.addEventListener("resize", () => updateIndicatorStyles());
+        await createCarouselItems(projects);
 
-        let prevButton = document.getElementById("carousel-prev");
-        let nextButton = document.getElementById("carousel-next");
-        console.log(prevButton);
+        $('#projects-carousel').slick({
+            infinite: true,            
+            slidesToShow: 1,           
+            slidesToScroll: 1,         
+            arrows: true,              
+            prevArrow: '<button type="button" class="slick-prev">←</button>',
+            nextArrow: '<button type="button" class="slick-next">→</button>',
+            dots: true,                
+            autoplay: true,            
+            autoplaySpeed: 10000,      
+            swipe: true,               
+            touchThreshold: 50,        
+            speed: 1000,               
+            draggable: true,           
+        });
 
-        prevButton.addEventListener("click", () => changeProjectFromArrow(-1));
-        nextButton.addEventListener("click", () => changeProjectFromArrow(1));
 
-        
+        $('#projects-carousel').on('click', '.slick-slide', function () {
+            const index = $(this).data('index');  
+            openProjectModal(projects[index]);    
+        });
+
     } catch (error) {
         console.error("Error al cargar los proyectos:", error);
     }
@@ -53,109 +66,106 @@ function changeLanguage(lang, animation) {
     }
 }
 
-let currentProjectIndex = 0;
+async function createCarouselItems(projects) {
+    let carouselItemsContainer = document.getElementById("projects-carousel");
 
-function setupCarouselIndicators(projectCount) {
-    const indicatorsContainer = document.getElementById("carousel-indicators");
-    indicatorsContainer.innerHTML = '';
 
-    for (let i = 0; i < projectCount; i++) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.dataset.tweSlideTo = i;
-        button.setAttribute("aria-label", `Slide ${i + 1}`);
-        button.className = `indicator mx-[3px] cursor-pointer bg-white opacity-50 transition-opacity duration-[600ms]`;
+    carouselItemsContainer.innerHTML = '';
 
-        if (i === 0) {
-            button.setAttribute("aria-current", "true");
-            button.classList.add("opacity-100");
-        }
+    const promises = projects.map((project, index) => {
+        return new Promise((resolve) => {
+            const item = document.createElement("div");
+            item.classList.add("relative", "slick-slide");
+            item.setAttribute("data-index", index);
 
-        indicatorsContainer.appendChild(button);
+            const img = document.createElement("img");
+            img.src = project.gallery[0];
+            img.alt = project.title;
+            img.classList.add(
+                "block", 
+                "w-full", 
+                "h-[600px]", 
+                "object-cover", 
+                "cursor-pointer",           // Indica que la imagen es clicable
+                "transition-transform", 
+                "duration-300", 
+                "hover:scale-105",           // Solo la imagen se agranda al hacer hover
+                "hover:opacity-90"           // Solo la imagen reduce su opacidad al hacer hover
+            );
 
-        button.addEventListener("click", () => changeProjectTo(i));
-    }
-    updateIndicatorStyles();
-}
+            const content = document.createElement("div");
+            content.classList.add("absolute", "bottom-0", "left-0", "w-full", "bg-black", "bg-opacity-50");
+            content.style.padding = "20px";
 
-function updateIndicatorStyles() {
-    const indicators = document.querySelectorAll(".indicator");
-    const isSmallScreen = window.innerWidth < 768;
+            const textContent = document.createElement("div");
+            textContent.classList.add("text-center", "text-white");
 
-    indicators.forEach(button => {
-        if (isSmallScreen) {
-            button.classList.remove("w-[30px]", "h-[3px]", "rounded-none");
-            button.classList.add("w-2.5", "h-2.5", "rounded-full");
-        } else {
-            button.classList.remove("w-2.5", "h-2.5", "rounded-full");
-            button.classList.add("w-[30px]", "h-[3px]", "rounded-none");
-        }
+            const title = document.createElement("h5");
+            title.classList.add("text-xl", "font-bold");
+            title.textContent = project.title;
+            textContent.appendChild(title);
+
+            const description = document.createElement("p");
+            description.classList.add("mt-2", "text-sm");
+            description.textContent = project.description;
+            textContent.appendChild(description);
+
+            content.appendChild(textContent);
+            item.appendChild(img);  
+            item.appendChild(content);  
+
+            img.onload = () => {
+                carouselItemsContainer.appendChild(item);
+                resolve();  
+            };
+        });
     });
+
+    await Promise.all(promises);
 }
 
-function changeProjectTo(index) {
-    let indicators = document.querySelectorAll(".indicator");
-    let carouselItems = document.querySelectorAll("#carousel-items > div");
 
-    if (index === currentProjectIndex) return;
-    
-    carouselItems[currentProjectIndex].style.opacity = "0";
-    carouselItems[currentProjectIndex].style.pointerEvents = "none"; 
-    indicators[currentProjectIndex].classList.remove("opacity-100");
-    indicators[currentProjectIndex].classList.add("opacity-50");
+function openProjectModal(project) {
+    const modal = document.getElementById("project-modal");
+    const modalGallery = document.getElementById("modal-gallery");
+    const modalTitle = document.getElementById("modal-title");
+    const modalDescription = document.getElementById("modal-description");
 
-    currentProjectIndex = index;
-    carouselItems[index].style.opacity = "1";
-    carouselItems[index].style.pointerEvents = "auto";
-    indicators[currentProjectIndex].classList.remove("opacity-50");
-    indicators[currentProjectIndex].classList.add("opacity-100");
-
-}
-
-function changeProjectFromArrow(direction) {
-    const indicators = document.querySelectorAll(".indicator");
-    let newIndex = currentProjectIndex + direction;
-
-    if (newIndex < 0) newIndex = indicators.length - 1;
-    if (newIndex >= indicators.length) newIndex = 0;
-
-    changeProjectTo(newIndex);
-}
-
-function createCarouselItems(projects) {
-    let carouselItemsContainer = document.getElementById("carousel-items");
-    projects.forEach((project, index) => {
-        const item = document.createElement("div");
-        item.classList.add("relative", "float-left", "-mr-[100%]", "w-full", "transition-transform", "duration-[600ms]", "ease-in-out", "motion-reduce:transition-none");
-
-        if (index !== 0) {
-            item.style.opacity = "0";
-            item.style.pointerEvents = "none";
-        }
-
+    modalTitle.textContent = project.title;
+    modalDescription.textContent = project.description;
+    modalGallery.innerHTML = ''; 
+    project.gallery.forEach((image) => {
         const img = document.createElement("img");
-        img.src = project.thumbnail;
-        img.alt = project.title;
-        img.classList.add("block", "w-full", "h-[600px]", "object-cover");
-        item.appendChild(img);
-
-        const content = document.createElement("div");
-        content.classList.add("absolute", "inset-x-[15%]", "bottom-5", "hidden", "py-5", "text-center", "text-white", "md:block");
-        content.style.textShadow = "2px 2px 4px rgba(0, 0, 0, 0.8)"; 
-
-        const title = document.createElement("h5");
-        title.classList.add("text-xl");
-        title.textContent = project.title;
-        content.appendChild(title);
-
-        const description = document.createElement("p");
-        description.textContent = project.description;
-        content.appendChild(description);
-
-        item.appendChild(content);
-
-        carouselItemsContainer.appendChild(item);
-
-        setupCarouselIndicators(projects.length);
+        img.src = image;
+        img.classList.add("w-full", "h-auto", "object-cover");
+        modalGallery.appendChild(img);
     });
+
+    if ($(modalGallery).hasClass('slick-initialized')) {
+        $(modalGallery).slick('unslick'); 
+    }
+
+    $(modalGallery).slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        prevArrow: '<button type="button" class="slick-prev">←</button>',
+        nextArrow: '<button type="button" class="slick-next">→</button>',
+    });
+
+    modal.classList.remove("hidden");
+
+    modal.addEventListener("click", function closeModalListener(e) {
+        if (e.target === modal) {
+            closeModal(closeModalListener); 
+        }
+    });
+}
+
+
+function closeModal(closeModalListener) {
+    const modal = document.getElementById("project-modal");
+    modal.classList.add("hidden"); 
+    modal.removeEventListener("click", closeModalListener);
 }

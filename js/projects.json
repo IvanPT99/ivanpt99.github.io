@@ -2,61 +2,29 @@
     {
         "title": "Soulsdle",
         "description": "Soulsdle es un minijuego web inspirado en Wordle con tematica de la saga Souls. ",
-        "tecnologias": [
+        "skills": [
             "Vue.js",
             "Vuex",
             "Typescript",
             "PHP",
             "Laravel"
         ],
-        "thumbnail": "media/project2.png",
-        "imagenes": [
-            "soulsdle-1.jpg",
-            "soulsdle-2.jpg",
-            "soulsdle-3.jpg"
+        "gallery": [
+            "media/soulsdle/soulsdle1.png",
+            "media/soulsdle/soulsdle2.png",
+            "media/soulsdle/soulsdle3.png",
+            "media/soulsdle/soulsdle4.png",
+            "media/soulsdle/soulsdle5.png",
+            "media/soulsdle/soulsdle6.png"
         ],
-        "codigo": [
+        "github": [
             {
-                "front-end": "frontend"
+                "front-end": "url"
             },
             {
-                "back-end": "backend"
+                "back-end": "url"
             }
-        ]
-    },
-    {
-        "title": "Offibay",
-        "description": "EMS para la gestión de proyectos, empleados, facturas, presupuestos, clientes, etc.",
-        "tecnologias": [
-            "Vue.js",
-            "Vuex",
-            "Nuxt.js",
-            "Java",
-            "Spring Boot",
-            "Hibernate"
         ],
-        "thumbnail": "media/project1.png",
-        "imagenes": [
-            "gestor-facturas-1.jpg",
-            "gestor-facturas-2.jpg"
-        ],
-        "codigo": "https://github.com/ivan/gestor-facturas",
-        "website": "https://facturas.empresa.com"
-    },
-    {
-        "proyecto": "Discord Bot AI",
-        "descripcion": "Bot para Discord basado en inteligencia artificial que interactúa con los usuarios, responde preguntas y proporciona asistencia en tiempo real utilizando la API de OpenAI.",
-        "tecnologias": [
-            "Node.js",
-            "Discord.js",
-            "OpenAI API"
-        ],
-        "thumbnail": "media/project3.png",
-        "imagenes": [
-            "discord-bot-1.jpg",
-            "discord-bot-2.jpg"
-        ],
-        "codigo": "https://github.com/ivan/discord-bot-ai",
-        "website": "https://discord-bot-ai.com"
+        "website": "https://soulsdle.com/"
     }
 ]

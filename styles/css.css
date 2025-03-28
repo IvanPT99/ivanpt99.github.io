@@ -1,0 +1,8 @@
+.slick-slide .absolute.bg-black.bg-opacity-50 {
+    transition: background-color 0.3s ease-in-out; /* Añadir una transición suave al fondo */
+}
+
+/* Ajustes de texto */
+.slick-slide .text-xl {
+    font-size: 1.5rem; /* Ajusta el tamaño del texto */
+}
