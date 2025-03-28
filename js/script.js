@@ -155,6 +155,8 @@ function openProjectModal(project) {
     });
 
     modal.classList.remove("hidden");
+    modal.classList.add('flex');
+
 
     modal.addEventListener("click", function closeModalListener(e) {
         if (e.target === modal) {
@@ -166,6 +168,7 @@ function openProjectModal(project) {
 
 function closeModal(closeModalListener) {
     const modal = document.getElementById("project-modal");
+    modal.classList.remove('flex');
     modal.classList.add("hidden"); 
     modal.removeEventListener("click", closeModalListener);
 }
