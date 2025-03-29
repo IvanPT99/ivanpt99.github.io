@@ -14,14 +14,14 @@ const techLogos = {
     "Spring-boot": "media/logo/springboot-logo.png",
     "Hibernate": "media/logo/hibernate-logo.png",
     "Vue.js": "media/logo/vue-logo.png",
-    "Vuex": "media/logo/vuex-logo.svg", 
+    "Vuex": "media/logo/vuex-logo.svg",
     "Vite.js": "media/logo/vitejs-logo.png",
     "Typescript": "media/logo/typescript-logo.png",
     "PHP": "media/logo/php-logo.png",
     "Laravel": "media/logo/laravel-logo.png"
 };
 
-let projects=[];
+let projects = [];
 
 document.addEventListener("DOMContentLoaded", async function () {
     let languageSelector = document.getElementById("language-selector");
@@ -38,25 +38,25 @@ document.addEventListener("DOMContentLoaded", async function () {
         await createCarouselItems(languageSelector.value);
 
         $('#projects-carousel').slick({
-            infinite: true,            
-            slidesToShow: 1,           
-            slidesToScroll: 1,         
-            arrows: true,              
+            infinite: true,
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: true,
             prevArrow: '<button type="button" class="slick-prev">←</button>',
             nextArrow: '<button type="button" class="slick-next">→</button>',
-            dots: true,                
-            autoplay: true,            
-            autoplaySpeed: 10000,      
-            swipe: true,               
-            touchThreshold: 50,        
-            speed: 1000,               
-            draggable: true,           
+            dots: true,
+            autoplay: true,
+            autoplaySpeed: 10000,
+            swipe: true,
+            touchThreshold: 50,
+            speed: 1000,
+            draggable: true,
         });
 
 
         $('#projects-carousel').on('click', '.slick-slide', function () {
-            const index = $(this).data('index');  
-            openProjectModal(projects[index]);    
+            const index = $(this).data('index');
+            openProjectModal(projects[index]);
         });
 
     } catch (error) {
@@ -93,7 +93,7 @@ function changeLanguage(lang, animation) {
     let carouselItems = document.querySelectorAll('.slick-slide');
     carouselItems.forEach(item => {
         let index = item.getAttribute('data-index');
-        let project = projects[index]; 
+        let project = projects[index];
         let description = item.querySelector('.project-description');
 
         description.textContent = project.description.short[lang];
@@ -114,13 +114,13 @@ async function createCarouselItems(lang) {
             img.src = project.gallery[0];
             img.alt = project.title;
             img.classList.add(
-                "block", 
-                "w-full", 
-                "h-[600px]", 
-                "object-cover", 
+                "block",
+                "w-full",
+                "h-[600px]",
+                "object-cover",
                 "cursor-pointer",           // Indica que la imagen es clicable
-                "transition-transform", 
-                "duration-300", 
+                "transition-transform",
+                "duration-300",
                 "hover:scale-105",           // Solo la imagen se agranda al hacer hover
                 "hover:opacity-90"           // Solo la imagen reduce su opacidad al hacer hover
             );
@@ -143,12 +143,12 @@ async function createCarouselItems(lang) {
             textContent.appendChild(description);
 
             content.appendChild(textContent);
-            item.appendChild(img);  
-            item.appendChild(content);  
+            item.appendChild(img);
+            item.appendChild(content);
 
             img.onload = () => {
                 carouselItemsContainer.appendChild(item);
-                resolve();  
+                resolve();
             };
         });
     });
@@ -169,7 +169,7 @@ function openProjectModal(project) {
 
     modalTitle.textContent = project.title;
     modalDescription.textContent = project.description.long[currentLanguage];
-    modalGallery.innerHTML = ''; 
+    modalGallery.innerHTML = '';
     frontendLinks.innerHTML = '';
     backendLinks.innerHTML = '';
     modalSkills.innerHTML = '';
@@ -182,40 +182,38 @@ function openProjectModal(project) {
         modalGallery.appendChild(img);
     });
 
-    // Renderizar Skills
-    const skillContainer = document.createElement("div");
-    skillContainer.classList.add("flex", "flex-row", "gap-4");
-    
-    function renderSkills(category, skills) {
-        const categoryDiv = document.createElement("div");
-        categoryDiv.classList.add("w-full", "flex", "flex-col", "items-start", "gap-2");
+    Object.entries(project.skills).forEach(([category, skills]) => {
+        let categoryDiv = document.createElement("div");
+        categoryDiv.id = category + "-skills";
+        categoryDiv.classList.add("grid", "grid-cols-2", "gap-2");
 
-        const categoryTitle = document.createElement("div");
-        categoryTitle.classList.add("flex", "items-center", "gap-2", "mb-2");
+        let categoryTitle = document.createElement("h4");
+        categoryTitle.id = category + "-skills-title";
+        categoryTitle.classList.add("text-xl", "font-bold", "flex", "items-center");
+        categoryTitle.textContent = translations[currentLanguage][category + "-skills-title"] || category;
 
-        const categoryLogo = document.createElement("img");
-        categoryLogo.src = `media/logo/${category}.png`;
-        categoryLogo.alt = `${category} Logo`;
-        categoryLogo.classList.add("w-8", "h-8");
+        let categoryIcon = document.createElement("img");
+        categoryIcon.src = `media/logo/${category}.png`;
+        categoryIcon.alt = `${category} icon`;
+        categoryIcon.classList.add("w-6", "h-6", "mr-2"); 
 
-        const categoryText = document.createElement("h4");
-        categoryText.textContent = category === "frontend" ? "Frontend Technologies" : "Backend Technologies";
-        categoryText.classList.add("text-white", "text-xl", "font-bold");
+        categoryTitle.prepend(categoryIcon);
 
-        categoryTitle.appendChild(categoryLogo);
-        categoryTitle.appendChild(categoryText);
-        categoryDiv.appendChild(categoryTitle);
+        // Agregar el título y el contenedor de skills al modal
+        modalSkills.appendChild(categoryTitle);
+        modalSkills.appendChild(categoryDiv);
 
+        // Renderizar cada skill dentro de la categoría
         skills.forEach(skill => {
-            const skillDiv = document.createElement("div");
+            let skillDiv = document.createElement("div");
             skillDiv.classList.add("skill-chip", "flex", "items-center", "bg-gray-800", "backdrop-blur-md", "p-2", "rounded", "w-full");
 
-            const skillLogo = document.createElement("img");
-            skillLogo.src = techLogos[skill] || ""; 
+            let skillLogo = document.createElement("img");
+            skillLogo.src = techLogos[skill] || "";  // Asumimos que `techLogos` está definido en otro lugar
             skillLogo.alt = skill;
             skillLogo.classList.add("w-6", "h-6", "mr-2");
 
-            const skillName = document.createElement("span");
+            let skillName = document.createElement("span");
             skillName.textContent = skill;
             skillName.classList.add("text-sm", "text-white");
 
@@ -223,14 +221,7 @@ function openProjectModal(project) {
             skillDiv.appendChild(skillName);
             categoryDiv.appendChild(skillDiv);
         });
-
-        skillContainer.appendChild(categoryDiv);
-    }
-
-    renderSkills("frontend", project.skills.frontend);
-    renderSkills("backend", project.skills.backend);
-    
-    modalSkills.appendChild(skillContainer);
+    });
 
     // Renderizar Links (Front-end y Back-end)
     if (project.links?.frontend) {
@@ -297,7 +288,7 @@ function openProjectModal(project) {
 
     modal.addEventListener("click", function closeModalListener(e) {
         if (e.target === modal) {
-            closeModal(closeModalListener); 
+            closeModal(closeModalListener);
         }
     });
 }
@@ -310,8 +301,8 @@ function closeModal(closeModalListener) {
 
     setTimeout(() => {
         modal.classList.remove('flex');
-        modal.classList.add("hidden"); 
-    }, 300); 
+        modal.classList.add("hidden");
+    }, 300);
 
     if ($(modalGallery).hasClass('slick-initialized')) {
         $(modalGallery).slick('unslick');
