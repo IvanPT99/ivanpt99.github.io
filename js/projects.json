@@ -1,11 +1,21 @@
 [
     {
         "title": "Soulsdle",
-        "description": "Soulsdle es un minijuego web inspirado en Wordle con tematica de la saga Souls. ",
+       "description": {
+            "short": {
+                "es": "Soulsdle es un minijuego web inspirado en Wordle con temática de la saga Souls.",
+                "en": "Soulsdle is a web mini-game inspired by Wordle with a Souls saga theme."
+            },
+            "long": {
+                "es": "Soulsdle es un minijuego basado en el concepto de Wordle, pero con temática de la saga Souls...",
+                "en": "Soulsdle is a mini-game based on the Wordle concept but with a Souls saga theme..."
+            }
+        },
         "skills": [
             "Vue.js",
-            "Vuex",
+            "Vite.js",
             "Typescript",
+            "Bootstrap",
             "PHP",
             "Laravel"
         ],
@@ -17,13 +27,9 @@
             "media/soulsdle/soulsdle5.png",
             "media/soulsdle/soulsdle6.png"
         ],
-        "github": [
-            {
-                "front-end": "url"
-            },
-            {
-                "back-end": "url"
-            }
+       "github": [
+            {"front-end": "url"},
+            {"back-end": "url"}
         ],
         "website": "https://soulsdle.com/"
     }

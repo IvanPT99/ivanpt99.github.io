@@ -1,3 +1,28 @@
+const techLogos = {
+    "JavaScript": "media/logo/js-logo.png",
+    "HTML": "media/logo/html-logo.png",
+    "CSS": "media/logo/css-logo.png",
+    "Bootstrap": "media/logo/bootstrap-logo.png",
+    "Tailwind CSS": "media/logo/tailwind-logo.png",
+    "AEM": "media/logo/aem-logo.png",
+    "AngularJS": "media/logo/angularjs-logo.png",
+    "MariaDB": "media/logo/mariadb-logo.png",
+    "MySQL": "media/logo/mysql-logo.png",
+    "MongoDB": "media/logo/mongodb-logo.png",
+    "Node.js": "media/logo/nodejs-logo.png",
+    "Java": "media/logo/java-logo.png",
+    "Spring-boot": "media/logo/springboot-logo.png",
+    "Hibernate": "media/logo/hibernate-logo.png",
+    "Vue.js": "media/logo/vue-logo.png",
+    "Vuex": "media/logo/vuex-logo.svg", 
+    "Vite.js": "media/logo/vitejs-logo.png",
+    "Typescript": "media/logo/typescript-logo.png",
+    "PHP": "media/logo/php-logo.png",
+    "Laravel": "media/logo/laravel-logo.png"
+};
+
+let projects=[];
+
 document.addEventListener("DOMContentLoaded", async function () {
     let languageSelector = document.getElementById("language-selector");
     changeLanguage(languageSelector.value, false);
@@ -8,9 +33,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     try {
         const response = await fetch("js/projects.json");
-        const projects = await response.json();
+        projects = await response.json();
 
-        await createCarouselItems(projects);
+        await createCarouselItems(languageSelector.value);
 
         $('#projects-carousel').slick({
             infinite: true,            
@@ -64,12 +89,19 @@ function changeLanguage(lang, animation) {
             });
         }
     }
+
+    let carouselItems = document.querySelectorAll('.slick-slide');
+    carouselItems.forEach(item => {
+        let index = item.getAttribute('data-index');
+        let project = projects[index]; 
+        let description = item.querySelector('.project-description');
+
+        description.textContent = project.description.short[lang];
+    });
 }
 
-async function createCarouselItems(projects) {
+async function createCarouselItems(lang) {
     let carouselItemsContainer = document.getElementById("projects-carousel");
-
-
     carouselItemsContainer.innerHTML = '';
 
     const promises = projects.map((project, index) => {
@@ -106,8 +138,8 @@ async function createCarouselItems(projects) {
             textContent.appendChild(title);
 
             const description = document.createElement("p");
-            description.classList.add("mt-2", "text-sm");
-            description.textContent = project.description;
+            description.classList.add("mt-2", "text-sm", "project-description");
+            description.textContent = project.description.short[lang];
             textContent.appendChild(description);
 
             content.appendChild(textContent);
@@ -126,20 +158,42 @@ async function createCarouselItems(projects) {
 
 
 function openProjectModal(project) {
-    const modal = document.getElementById("project-modal");
-    const modalGallery = document.getElementById("modal-gallery");
-    const modalTitle = document.getElementById("modal-title");
-    const modalDescription = document.getElementById("modal-description");
+    let modal = document.getElementById("project-modal");
+    let modalGallery = document.getElementById("modal-gallery");
+    let modalTitle = document.getElementById("modal-title");
+    let modalDescription = document.getElementById("modal-description");
+    let modalSkills = document.getElementById("modal-skills");
+    let currentLanguage = document.getElementById("language-selector").value;
 
     modalTitle.textContent = project.title;
-    modalDescription.textContent = project.description;
+    modalDescription.textContent = project.description.long[currentLanguage];
     modalGallery.innerHTML = ''; 
     project.gallery.forEach((image) => {
-        const img = document.createElement("img");
+        let img = document.createElement("img");
         img.src = image;
         img.classList.add("w-full", "h-auto", "object-cover");
         modalGallery.appendChild(img);
     });
+
+    modalSkills.innerHTML = '';
+    project.skills.forEach(skill => {
+        const skillDiv = document.createElement("div");
+        skillDiv.classList.add("skill-chip", "flex", "items-center", "bg-gray-200", "p-2", "rounded-full", "m-1");
+
+        const skillLogo = document.createElement("img");
+        skillLogo.src = techLogos[skill];
+        skillLogo.alt = skill;
+        skillLogo.classList.add("w-6", "h-6", "mr-2");
+
+        const skillName = document.createElement("span");
+        skillName.textContent = skill;
+        skillName.classList.add("text-sm");
+
+        skillDiv.appendChild(skillLogo);
+        skillDiv.appendChild(skillName);
+        modalSkills.appendChild(skillDiv);
+    });
+
 
     if ($(modalGallery).hasClass('slick-initialized')) {
         $(modalGallery).slick('unslick'); 
