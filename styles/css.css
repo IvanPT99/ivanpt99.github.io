@@ -6,3 +6,13 @@
 .slick-slide .text-xl {
     font-size: 1.5rem; /* Ajusta el tamaño del texto */
 }
+
+.slick-dots li button::before {
+    color: white;
+    opacity: 0.5;
+}
+
+.slick-dots li.slick-active button::before {
+    color: white;
+    opacity: 1;
+}

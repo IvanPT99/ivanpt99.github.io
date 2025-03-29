@@ -163,54 +163,137 @@ function openProjectModal(project) {
     let modalTitle = document.getElementById("modal-title");
     let modalDescription = document.getElementById("modal-description");
     let modalSkills = document.getElementById("modal-skills");
+    let frontendLinks = document.getElementById("frontend-links");
+    let backendLinks = document.getElementById("backend-links");
     let currentLanguage = document.getElementById("language-selector").value;
 
     modalTitle.textContent = project.title;
     modalDescription.textContent = project.description.long[currentLanguage];
     modalGallery.innerHTML = ''; 
+    frontendLinks.innerHTML = '';
+    backendLinks.innerHTML = '';
+    modalSkills.innerHTML = '';
+
+    // Renderizar galería de imágenes
     project.gallery.forEach((image) => {
         let img = document.createElement("img");
         img.src = image;
-        img.classList.add("w-full", "h-auto", "object-cover");
+        img.classList.add("w-full", "h-full", "object-cover", "rounded-t-lg", "lg:rounded-l-lg");
         modalGallery.appendChild(img);
     });
 
-    modalSkills.innerHTML = '';
-    project.skills.forEach(skill => {
-        const skillDiv = document.createElement("div");
-        skillDiv.classList.add("skill-chip", "flex", "items-center", "bg-gray-200", "p-2", "rounded-full", "m-1");
+    // Renderizar Skills
+    const skillContainer = document.createElement("div");
+    skillContainer.classList.add("flex", "flex-row", "gap-4");
+    
+    function renderSkills(category, skills) {
+        const categoryDiv = document.createElement("div");
+        categoryDiv.classList.add("w-full", "flex", "flex-col", "items-start", "gap-2");
 
-        const skillLogo = document.createElement("img");
-        skillLogo.src = techLogos[skill];
-        skillLogo.alt = skill;
-        skillLogo.classList.add("w-6", "h-6", "mr-2");
+        const categoryTitle = document.createElement("div");
+        categoryTitle.classList.add("flex", "items-center", "gap-2", "mb-2");
 
-        const skillName = document.createElement("span");
-        skillName.textContent = skill;
-        skillName.classList.add("text-sm");
+        const categoryLogo = document.createElement("img");
+        categoryLogo.src = `media/logo/${category}.png`;
+        categoryLogo.alt = `${category} Logo`;
+        categoryLogo.classList.add("w-8", "h-8");
 
-        skillDiv.appendChild(skillLogo);
-        skillDiv.appendChild(skillName);
-        modalSkills.appendChild(skillDiv);
-    });
+        const categoryText = document.createElement("h4");
+        categoryText.textContent = category === "frontend" ? "Frontend Technologies" : "Backend Technologies";
+        categoryText.classList.add("text-white", "text-xl", "font-bold");
 
+        categoryTitle.appendChild(categoryLogo);
+        categoryTitle.appendChild(categoryText);
+        categoryDiv.appendChild(categoryTitle);
 
-    if ($(modalGallery).hasClass('slick-initialized')) {
-        $(modalGallery).slick('unslick'); 
+        skills.forEach(skill => {
+            const skillDiv = document.createElement("div");
+            skillDiv.classList.add("skill-chip", "flex", "items-center", "bg-gray-800", "backdrop-blur-md", "p-2", "rounded", "w-full");
+
+            const skillLogo = document.createElement("img");
+            skillLogo.src = techLogos[skill] || ""; 
+            skillLogo.alt = skill;
+            skillLogo.classList.add("w-6", "h-6", "mr-2");
+
+            const skillName = document.createElement("span");
+            skillName.textContent = skill;
+            skillName.classList.add("text-sm", "text-white");
+
+            skillDiv.appendChild(skillLogo);
+            skillDiv.appendChild(skillName);
+            categoryDiv.appendChild(skillDiv);
+        });
+
+        skillContainer.appendChild(categoryDiv);
     }
 
+    renderSkills("frontend", project.skills.frontend);
+    renderSkills("backend", project.skills.backend);
+    
+    modalSkills.appendChild(skillContainer);
+
+    // Renderizar Links (Front-end y Back-end)
+    if (project.links?.frontend) {
+        project.links.frontend.forEach(link => {
+            const button = document.createElement("a");
+            button.href = link.url;
+            button.target = "_blank";
+            button.textContent = `Front-end: ${link.label}`;
+            button.classList.add("py-2", "px-4", "rounded", "bg-blue-500", "text-white", "hover:bg-blue-600");
+            frontendLinks.appendChild(button);
+        });
+    }
+
+    if (project.links?.backend) {
+        project.links.backend.forEach(link => {
+            const button = document.createElement("a");
+            button.href = link.url;
+            button.target = "_blank";
+            button.textContent = `Back-end: ${link.label}`;
+            button.classList.add("py-2", "px-4", "rounded", "bg-green-500", "text-white", "hover:bg-green-600");
+            backendLinks.appendChild(button);
+        });
+    }
+
+    if ($(modalGallery).hasClass('slick-initialized')) {
+        $(modalGallery).slick('unslick');
+    }
+
+    // Inicializar Slick nuevamente
     $(modalGallery).slick({
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         arrows: true,
-        prevArrow: '<button type="button" class="slick-prev">←</button>',
-        nextArrow: '<button type="button" class="slick-next">→</button>',
+        dots: true,
+        appendDots: $(modalGallery),
+        prevArrow: '<button type="button" class="slick-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow"><span class="sr-only">Previous</span>←</button>',
+        nextArrow: '<button type="button" class="slick-next absolute top-1/2 right-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow"><span class="sr-only">Next</span>→</button>',
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     });
 
     modal.classList.remove("hidden");
-    modal.classList.add('flex');
+    modal.classList.add('flex', 'opacity-0');
 
+    setTimeout(() => {
+        modal.classList.remove("opacity-0");
+        modal.classList.add("opacity-100");
+    }, 10);
 
     modal.addEventListener("click", function closeModalListener(e) {
         if (e.target === modal) {
@@ -219,10 +302,19 @@ function openProjectModal(project) {
     });
 }
 
-
 function closeModal(closeModalListener) {
-    const modal = document.getElementById("project-modal");
-    modal.classList.remove('flex');
-    modal.classList.add("hidden"); 
+    let modal = document.getElementById("project-modal");
+    let modalGallery = document.getElementById("modal-gallery");
+    modal.classList.remove('opacity-100');
+    modal.classList.add("opacity-0");
+
+    setTimeout(() => {
+        modal.classList.remove('flex');
+        modal.classList.add("hidden"); 
+    }, 300); 
+
+    if ($(modalGallery).hasClass('slick-initialized')) {
+        $(modalGallery).slick('unslick');
+    }
     modal.removeEventListener("click", closeModalListener);
 }

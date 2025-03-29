@@ -11,14 +11,18 @@
                 "en": "Soulsdle is a mini-game based on the Wordle concept but with a Souls saga theme..."
             }
         },
-        "skills": [
-            "Vue.js",
-            "Vite.js",
-            "Typescript",
-            "Bootstrap",
+        "skills": {
+            "frontend": [
+                "HTML",
+                "Bootstrap",
+                "Vue.js",
+                "Vite.js"
+            ],
+            "backend": [
             "PHP",
             "Laravel"
-        ],
+            ]
+        },
         "gallery": [
             "media/soulsdle/soulsdle1.png",
             "media/soulsdle/soulsdle2.png",
