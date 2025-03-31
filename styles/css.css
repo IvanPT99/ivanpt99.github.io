@@ -48,3 +48,20 @@
 #next-project {
     right: -30px; /* Fuera del modal a la derecha */
 }
+
+@keyframes rainbow {
+    0% { color: red; }
+    14% { color: yellow; }
+    28% { color: green; }
+    42% { color: cyan; }
+    57% { color: blue; }
+    71% { color: magenta; }
+    85% { color: red; }
+    100% { color: yellow; }
+}
+
+/* Aplicación de la animación */
+.text-rainbow {
+    animation: rainbow 3s linear infinite;
+    font-weight: bold;
+}

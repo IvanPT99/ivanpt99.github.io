@@ -10,7 +10,8 @@ const translations = {
             <p>Apasionado por la programación, los videojuegos y la exploración de nuevas culturas, mi objetivo es seguir creciendo como desarrollador y aplicar mis conocimientos en proyectos de impacto.</p>
         `,
         "cv-button": "Descargar CV",
-        "projects-about": "Descubre algunos de mis trabajos y proyectos personales.",
+        "projects-about": `
+            <p>Descubre algunos de mis trabajos y proyectos personales.</p><p>No dudes en hacer <span class="text-rainbow">click</span> para más información.</p>`,
         "projects-title": "Proyectos",
         "frontend-skills-title": "Tecnologías Front-End",
         "backend-skills-title": "Tecnologías Back-End",
@@ -26,7 +27,8 @@ const translations = {
             <p>Passionate about programming, video games, and exploring new cultures, my goal is to keep growing as a developer and apply my knowledge to impactful projects.</p>
         `,
         "cv-button": "Download CV",
-        "projects-about": "Discover some of my work and personal projects.",
+        "projects-about": `
+            <p>Discover some of my work and personal projects.</p><p> Do <span class="text-rainbow">click</span> for more information.</p>`,
         "projects-title": "Projects",
         "frontend-skills-title": "Front-End Technologies",
         "backend-skills-title": "Back-End Technologies",

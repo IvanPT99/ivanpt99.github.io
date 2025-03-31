@@ -18,7 +18,8 @@ const techLogos = {
     "Vite.js": "media/logo/vitejs-logo.png",
     "Typescript": "media/logo/typescript-logo.png",
     "PHP": "media/logo/php-logo.png",
-    "Laravel": "media/logo/laravel-logo.png"
+    "Laravel": "media/logo/laravel-logo.png",
+    "Maven": "media/logo/maven-logo.svg",
 };
 
 let projects = [];
@@ -115,9 +116,7 @@ async function createCarouselItems(lang) {
             img.src = project.gallery[0];
             img.alt = project.title;
             img.classList.add(
-                "block",
                 "w-full",
-                "h-[600px]",
                 "object-cover",
                 "cursor-pointer",           
                 "transition-transform",
@@ -127,8 +126,8 @@ async function createCarouselItems(lang) {
             );
 
             let content = document.createElement("div");
-            content.classList.add("absolute", "bottom-0", "left-0", "w-full", "bg-black", "bg-opacity-50");
-            content.style.padding = "20px";
+            content.classList.add("absolute", "bottom-0", "left-0", "w-full", "bg-black", "bg-opacity-50", "hidden", "md:block");
+            content.style.padding = "20px"; 
 
             let textContent = document.createElement("div");
             textContent.classList.add("text-center", "text-white");
