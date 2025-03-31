@@ -261,7 +261,6 @@ function openProjectModal(project) {
                     backendButton.classList.add("py-2", "px-4", "rounded", "bg-green-500", "text-white", "hover:bg-green-600", "flex-1");
                     buttonWrapper.appendChild(backendButton);
                 }
-    
                 linksContainer.appendChild(buttonWrapper);
             }
     
@@ -277,7 +276,6 @@ function openProjectModal(project) {
                 linksContainer.appendChild(websiteContainer);
             }
         } else {
-            
             linksContainer.classList.add("hidden");
         }
     }

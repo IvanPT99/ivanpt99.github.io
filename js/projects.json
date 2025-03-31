@@ -1,7 +1,7 @@
 [
     {
         "title": "Soulsdle",
-       "description": {
+        "description": {
             "short": {
                 "es": "Soulsdle es un minijuego web inspirado en Wordle con temática de la saga Souls.",
                 "en": "Soulsdle is a web mini-game inspired by Wordle with a Souls saga theme."
@@ -19,9 +19,9 @@
                 "Vite.js"
             ],
             "backend": [
-            "PHP",
-            "Laravel",
-            "MariaDB"
+                "PHP",
+                "Laravel",
+                "MariaDB"
             ]
         },
         "gallery": [
@@ -32,9 +32,75 @@
             "media/soulsdle/soulsdle5.png",
             "media/soulsdle/soulsdle6.png"
         ],
-       "links": [
-            {"front-end": "https://github.com/IvanPT99/Soulsdle-frontend-vue"},
-            {"back-end": "http://github.com/IvanPT99/Souldsle-LARAVEL-backend"}
+        "links": [
+            {
+                "front-end": "https://github.com/IvanPT99/Soulsdle-frontend-vue"
+            },
+            {
+                "back-end": "http://github.com/IvanPT99/Souldsle-LARAVEL-backend"
+            }
+        ]
+    },
+    {
+        "title": "Intesa Sanpaolo",
+        "description": {
+            "short": {
+                "es": "Intesa Sanpaolo es un proyecto de migración de AngularJS a JavaScript nativo en un entorno de AEM para una entidad bancaria.",
+                "en": "Intesa Sanpaolo is a project of migrating from AngularJS to native JavaScript in an AEM environment for a banking entity."
+            },
+            "long": {
+                "es": "Intesa Sanpaolo fue un proyecto realizado para una entidad bancaria en el que participé principalmente en la migración de AngularJS a JavaScript nativo dentro de un entorno de AEM. Además, creé varios componentes en AEM para mejorar la funcionalidad y la experiencia de usuario de la plataforma.",
+                "en": "Intesa Sanpaolo was a project developed for a banking entity where I was mainly involved in migrating from AngularJS to native JavaScript within an AEM environment. Additionally, I created several AEM components to improve platform functionality and user experience."
+            }
+        },
+        "skills": {
+            "frontend": [
+                "JavaScript",
+                "AngularJS",
+                "AEM"
+            ],
+            "backend": [
+                "AEM"
+            ]
+        },
+        "gallery": [
+            "media/intesasanpaolo/intesasanpaolo1.png",
+            "media/intesasanpaolo/intesasanpaolo2.png",
+            "media/intesasanpaolo/intesasanpaolo3.png"        ],
+        "links": [
+            {
+                "website": "https://www.intesasanpaolo.com/"
+            }
+        ]
+    }, 
+    {
+        "title": "Offibay",
+        "description": {
+            "short": {
+                "es": "Offibay es un EMS desarrollado para gestionar proyectos, equipos y la facturación de los mismos.",
+                "en": "Offibay is an EMS developed to manage projects, teams, and their billing."
+            },
+            "long": {
+                "es": "Offibay fue una herramienta desarrollada en mi última empresa para gestionar de manera eficiente los proyectos, equipos de trabajo y la facturación de los proyectos. El sistema permite a los usuarios administrar el flujo de trabajo desde la creación de un proyecto hasta la facturación de los servicios prestados.",
+                "en": "Offibay was a tool developed in my last company to efficiently manage projects, teams, and project billing. The system allows users to manage the workflow from project creation to billing for services rendered."
+            }
+        },
+        "skills": {
+            "frontend": [
+                "Vue.js",
+                "Vuex",
+                "Bootstrap"
+            ],
+            "backend": [
+                "Java",
+                "Maven",
+                "Spring-boot",
+                "Hibernate",
+                "MongoDB"
+            ]
+        },
+        "gallery": [
+            "media/offibay/offibay1.png"
         ]
     }
 ]
