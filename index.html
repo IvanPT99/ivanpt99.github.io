@@ -129,14 +129,14 @@
             </section>
 
             <!-- MODAL -->
-
             <div id="project-modal"
                 class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center">
                 <div
-                    class="relative w-[90%] max-w-6xl max-h-[90vh] bg-gray-900 text-white rounded-lg flex flex-col lg:flex-row overflow-hidden border border-white">
+                    class="relative w-[95%] max-w-6xl md:flex md:items-center md:justify-center h-[85%] bg-gray-900 text-white rounded-lg flex flex-col lg:flex-row border border-white">
 
                     <!-- Gallery -->
-                    <div id="modal-gallery" class="relative slick-carousel w-full lg:w-2/3 rounded-l-lg flex-shrink-0">
+                    <div id="modal-gallery"
+                        class="relative slick-carousel md:w-[50%] lg:w-[70%] rounded-l-lg flex-shrink-0">
                     </div>
 
                     <!-- Content -->
@@ -144,18 +144,25 @@
                         class="p-6 w-full lg:w-1/3 flex flex-col gap-6 overflow-y-auto max-h-[50vh] lg:max-h-full">
                         <div>
                             <h3 id="modal-title" class="text-3xl font-bold"></h3>
-                            <p id="modal-description" class="mt-4 text-gray-300"></p>
+                            <p id="modal-description" class="mt-4 lg:text-left text-gray-300"></p>
                             <div id="modal-skills" class="mt-6 grid grid-cols-2 gap-4 mb-2"></div>
                             <div id="modal-links" class="flex-col lg:flex-row gap-4 w-full"></div>
                         </div>
-                        
                     </div>
 
                     <!-- Botón de Cerrar -->
                     <button id="close-modal"
                         class="absolute top-2 right-2 text-white text-xl font-bold transition transform hover:scale-110 hover:brightness-125 focus:outline-none"
                         onclick="closeModal()">&times;</button>
-                </div>
+
+                    <!-- Botón de Navegación - Flecha Izquierda -->
+                    <button id="prev-project"
+                        class="prev-next-btn absolute top-1/2 left-[-30px] transform -translate-y-1/2 text-white text-3xl bg-gray-800 bg-opacity-50 hover:bg-opacity-80 p-2 transition-all hover:scale-110" onclick="handleProject('prev')">&#8592;</button>
+
+                    <!-- Botón de Navegación - Flecha Derecha -->
+                    <button id="next-project"
+                        class="prev-next-btn absolute top-1/2 right-[-30px] transform -translate-y-1/2 text-white text-3xl bg-gray-800 bg-opacity-50 hover:bg-opacity-80 p-2 transition-all hover:scale-110"  onclick="handleProject('next')">&#8594;</button>
+                    </div>
             </div>
 
 

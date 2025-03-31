@@ -22,6 +22,7 @@ const techLogos = {
 };
 
 let projects = [];
+let projectIndex = 0;
 
 document.addEventListener("DOMContentLoaded", async function () {
     let languageSelector = document.getElementById("language-selector");
@@ -55,8 +56,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 
         $('#projects-carousel').on('click', '.slick-slide', function () {
-            const index = $(this).data('index');
-            openProjectModal(projects[index]);
+            projectIndex = $(this).data('index');
+            openProjectModal(projectIndex);
         });
 
     } catch (error) {
@@ -106,11 +107,11 @@ async function createCarouselItems(lang) {
 
     const promises = projects.map((project, index) => {
         return new Promise((resolve) => {
-            const item = document.createElement("div");
+            let item = document.createElement("div");
             item.classList.add("relative", "slick-slide");
             item.setAttribute("data-index", index);
 
-            const img = document.createElement("img");
+            let img = document.createElement("img");
             img.src = project.gallery[0];
             img.alt = project.title;
             img.classList.add(
@@ -125,19 +126,19 @@ async function createCarouselItems(lang) {
                 "hover:opacity-90"           
             );
 
-            const content = document.createElement("div");
+            let content = document.createElement("div");
             content.classList.add("absolute", "bottom-0", "left-0", "w-full", "bg-black", "bg-opacity-50");
             content.style.padding = "20px";
 
-            const textContent = document.createElement("div");
+            let textContent = document.createElement("div");
             textContent.classList.add("text-center", "text-white");
 
-            const title = document.createElement("h5");
+            let title = document.createElement("h5");
             title.classList.add("text-xl", "font-bold");
             title.textContent = project.title;
             textContent.appendChild(title);
 
-            const description = document.createElement("p");
+            let description = document.createElement("p");
             description.classList.add("mt-2", "text-sm", "project-description");
             description.textContent = project.description.short[lang];
             textContent.appendChild(description);
@@ -157,24 +158,26 @@ async function createCarouselItems(lang) {
 }
 
 
-function openProjectModal(project) {
+function openProjectModal(index) {
+    let project = projects[index];
     let modal = document.getElementById("project-modal");
     let modalGallery = document.getElementById("modal-gallery");
     let modalTitle = document.getElementById("modal-title");
     let modalDescription = document.getElementById("modal-description");
     let modalSkills = document.getElementById("modal-skills");
+    let linksContainer = document.getElementById("modal-links");
     let currentLanguage = document.getElementById("language-selector").value;
-
-    modalTitle.textContent = project.title;
-    modalDescription.textContent = project.description.long[currentLanguage];
+    linksContainer.innerHTML = '';
     modalGallery.innerHTML = '';
     modalSkills.innerHTML = '';
 
-    
+    modalTitle.textContent = project.title;
+    modalDescription.textContent = project.description.long[currentLanguage];
+
     project.gallery.forEach((image) => {
         let img = document.createElement("img");
         img.src = image;
-        img.classList.add("w-full", "h-full", "object-cover", "rounded-t-lg", "lg:rounded-l-lg");
+        img.classList.add("object-cover", "rounded-t-lg", "lg:rounded-l-lg");
         modalGallery.appendChild(img);
     });
 
@@ -185,13 +188,13 @@ function openProjectModal(project) {
 
         let categoryTitle = document.createElement("h4");
         categoryTitle.id = category + "-skills-title";
-        categoryTitle.classList.add("text-sm", "font-semibold", "flex", "items-center");
+        categoryTitle.classList.add("text-sm", "font-semibold", "flex", "text-left");
         categoryTitle.textContent = translations[currentLanguage][category + "-skills-title"] || category;
 
         let categoryIcon = document.createElement("img");
         categoryIcon.src = `media/logo/${category}.png`;
         categoryIcon.alt = `${category} icon`;
-        categoryIcon.classList.add("w-6", "h-6", "mr-2");
+        categoryIcon.classList.add("w-6", "h-6", "mr-2", "self-center");
 
         categoryTitle.prepend(categoryIcon);
         categoryDiv.appendChild(categoryTitle);
@@ -216,10 +219,7 @@ function openProjectModal(project) {
         modalSkills.appendChild(categoryDiv);
     });
 
-    if (project.links) {
-        let linksContainer = document.getElementById("modal-links");
-        linksContainer.innerHTML = '';
-    
+    if (project.links) {    
         let hasFrontend = null;
         let hasBackend = null;
         let hasWebsite = null;
@@ -291,8 +291,8 @@ function openProjectModal(project) {
         arrows: true,
         dots: true,
         appendDots: $(modalGallery),
-        prevArrow: '<button type="button" class="slick-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow"><span class="sr-only">Previous</span>←</button>',
-        nextArrow: '<button type="button" class="slick-next absolute top-1/2 right-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow"><span class="sr-only">Next</span>→</button>',
+        prevArrow: '<button type="button" class="slick-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow bg-gray-800 bg-opacity-60 hover:bg-gray-700 flex items-center justify-center"><span class="sr-only">Previous</span>←</button>',
+        nextArrow: '<button type="button" class="slick-next absolute top-1/2 right-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow bg-gray-800 bg-opacity-60 hover:bg-gray-700 flex items-center justify-center"><span class="sr-only">Next</span>→</button>',        
         responsive: [
             {
                 breakpoint: 1024,
@@ -324,6 +324,20 @@ function openProjectModal(project) {
             closeModal();
         }
     });
+}
+
+function handleProject(direction) {
+    let modalGallery = document.getElementById("modal-gallery");
+    if ($(modalGallery).hasClass('slick-initialized')) {
+        $(modalGallery).slick('unslick');
+    }
+
+    if (direction === "next") {
+        projectIndex = (projectIndex + 1) % projects.length;
+    } else if (direction === "prev") {
+        projectIndex = (projectIndex - 1 + projects.length) % projects.length
+    }
+    openProjectModal(projectIndex);
 }
 
 function closeModalListener(e) {

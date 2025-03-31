@@ -16,3 +16,35 @@
     color: white;
     opacity: 1;
 }
+
+.prev-next-btn {
+    position: absolute;
+    top: 50%;  /* Centrado verticalmente */
+    transform: translateY(-50%);  /* Ajuste para centrarlo */
+    background-color: rgba(0, 0, 0, 0.5);  /* Fondo oscuro semi-transparente */
+    border: none;
+    padding: 10px;
+    border-radius: 50%;  /* Forma circular */
+    cursor: pointer;
+    transition: background-color 0.3s ease;  /* Transición suave */
+    z-index: 10;  /* Asegura que los botones estén por encima del modal */
+}
+
+.prev-next-btn:hover {
+    background-color: rgba(54, 51, 51, 0.8);  /* Fondo más oscuro cuando se pasa el mouse */
+    transform: translateY(-50%) scale(1.1); /* Escalado al hacer hover */
+}
+
+.prev-next-btn:focus {
+    outline: none;  /* Sin borde cuando el botón está enfocado */
+}
+
+/* Botón de Navegación - Flecha Izquierda */
+#prev-project {
+    left: -30px; /* Fuera del modal a la izquierda */
+}
+
+/* Botón de Navegación - Flecha Derecha */
+#next-project {
+    right: -30px; /* Fuera del modal a la derecha */
+}
