@@ -1,4 +1,4 @@
-const translations = {
+export const translations = {
     es: {
         "about-title": "Sobre mí",
         "quote": "Soy un desarrollador Full Stack con experiencia en integración tecnológica, migración de código y desarrollo de sistemas empresariales.",

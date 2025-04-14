@@ -1,3 +1,6 @@
+import { countries } from './countryCodes.js';
+import { translations } from './dictionary.js';
+
 const techLogos = {
     "JavaScript": "media/logo/js-logo.png",
     "HTML": "media/logo/html-logo.png",
@@ -64,6 +67,47 @@ document.addEventListener("DOMContentLoaded", async function () {
     } catch (error) {
         console.error("Error al cargar los proyectos:", error);
     }
+
+    let countryCodeselect = document.getElementById("countryCodeSelect");
+
+    countries.forEach((country) => {
+        let option = document.createElement("option");
+        option.value = country.value;
+        option.textContent = country.name;
+        option.setAttribute("data-countryCode", country.code); 
+        countryCodeselect.appendChild(option);
+      });
+
+    let contactForm = document.getElementById("contact-form");
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        let status = document.getElementById("contact-form-status");
+        let data = new FormData(event.target);
+        fetch(event.target.action, {
+          method: contactForm.method,
+          body: data,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            status.innerHTML = "Thanks for your submission!";
+            contactForm.reset()
+          } else {
+            response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+              } else {
+                status.innerHTML = "Oops! There was a problem submitting your form"
+              }
+            })
+          }
+        }).catch(error => {
+          status.innerHTML = "Oops! There was a problem submitting your form"
+        });
+      }
+      contactForm.addEventListener("submit", handleSubmit)
 });
 
 function changeLanguage(lang, animation) {
