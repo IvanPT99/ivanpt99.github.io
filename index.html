@@ -20,7 +20,7 @@
     <main class="w-full mx-auto py-16 px-5 flex flex-col items-center justify-center text-center space-y-6">
 
         <!-- lang -->
-        <section class="absolute top-5 right-5">
+        <section id="lang" class="absolute top-5 right-5">
             <select id="language-selector"
                 class="bg-indigo-600 text-white p-3 rounded-full focus:outline-none focus:ring-3 focus:ring-indigo-400">
                 <option value="es">ES Español</option>
@@ -28,7 +28,7 @@
             </select>
         </section>
 
-        <div class="flex flex-col w-full">
+        <div id="app" class="flex flex-col w-full">
             <!-- Presentation -->
             <section id="presentation"
                 class="flex flex-col mx-auto w-full max-w-full md:max-w-4xl items-center justify-center md:flex-row md:space-x-12">
@@ -106,7 +106,7 @@
             </section>
 
             <!-- Projects -->
-            <section id="projects md:h-[400px] lg:h-[200px]">
+            <section id="projects" class="w-full">
                 <div id="projects-carousel" class="relative w-10/12 mx-auto ">
                     <div class="slick-carousel"></div>
                     <button id="carousel-prev"
@@ -129,7 +129,7 @@
             </section>
 
             <!-- MODAL -->
-            <div id="project-modal"
+            <section id="project-modal"
                 class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center">
                 <div
                     class="relative w-[95%] max-w-6xl md:flex md:items-center md:justify-center h-[85%] bg-gray-900 text-white rounded-lg flex flex-col lg:flex-row border border-white">
@@ -152,29 +152,91 @@
 
                     <!-- Botón de Cerrar -->
                     <button id="close-modal"
-                        class="absolute top-2 right-2 text-white text-xl font-bold transition transform hover:scale-110 hover:brightness-125 focus:outline-none"
-                        onclick="closeModal()">&times;</button>
+                        class="absolute top-2 right-2 text-white text-xl font-bold transition transform hover:scale-110 hover:brightness-125 focus:outline-none">&times;</button>
 
                     <!-- Botón de Navegación - Flecha Izquierda -->
                     <button id="prev-project"
-                        class="prev-next-btn absolute top-1/2 left-[-30px] transform -translate-y-1/2 text-white text-3xl bg-gray-800 bg-opacity-50 hover:bg-opacity-80 p-2 transition-all hover:scale-110" onclick="handleProject('prev')">&#8592;</button>
+                        class="prev-next-btn absolute top-1/2 left-[-30px] transform -translate-y-1/2 text-white text-3xl bg-gray-800 bg-opacity-50 hover:bg-opacity-80 p-2 transition-all hover:scale-110">&#8592;</button>
 
                     <!-- Botón de Navegación - Flecha Derecha -->
                     <button id="next-project"
-                        class="prev-next-btn absolute top-1/2 right-[-30px] transform -translate-y-1/2 text-white text-3xl bg-gray-800 bg-opacity-50 hover:bg-opacity-80 p-2 transition-all hover:scale-110"  onclick="handleProject('next')">&#8594;</button>
+                        class="prev-next-btn absolute top-1/2 right-[-30px] transform -translate-y-1/2 text-white text-3xl bg-gray-800 bg-opacity-50 hover:bg-opacity-80 p-2 transition-all hover:scale-110">&#8594;</button>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact"
+                class="w-full mx-auto py-16 px-5 lg:w-[70%] text-center mt-10 bg-gradient-to-br from-gray-800 to-gray-900 shadow-md rounded-lg">
+                <h2 id="contact-title"
+                    class="text-3xl py-2 md:text-4xl font-bold text-white transition duration-300 hover:scale-105"></h2>
+                <p id="contact-text" class="text-white text-lg mt-2"></p>
+                <form id="contact-form" action="https://formspree.io/f/mwplzead" method="POST" class="mt-8 space-y-6">
+                    <div class="flex flex-col lg:flex-row gap-6">
+
+                        <div class="flex flex-col flex-1 space-y-4">
+                            <div>
+                                <label for="name" id="form-name"
+                                    class="block text-sm font-medium text-left text-white"></label>
+                                <input type="text" name="name" id="name" required
+                                    class="mt-2 w-full p-3 rounded-md bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+
+                            <div>
+                                <label for="email" id="form-email"
+                                    class="block text-sm font-medium text-left text-white"></label>
+                                <input type="email" id="email" name="email" required
+                                    class="mt-2 w-full p-3 rounded-md bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+
+                            <div>
+                                <label id="form-phone" class="block text-sm font-medium text-left text-white"></label>
+                                <div class="mt-2 flex gap-2">
+                                    <select name="countryCodeSelect" id="countryCodeSelect" required
+                                        class="w-1/3 p-3 rounded-md bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                        <option selected value="+34">🇪🇸 +34</option>
+                                    </select>
+                                    <input type="tel" name="phone" placeholder="649 123 456" id="phone"
+                                        class="w-2/3 p-3 rounded-md bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-1 flex flex-col space-y-4 text-left">
+                            <div>
+                                <label id="form-subject" for="subject"
+                                    class="block text-sm font-medium text-white"></label>
+                                <input type="text" id="subject" name="subject" required
+                                    class="mt-2 w-full p-3 rounded-md bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+
+                            <div class="flex-1">
+                                <label id="form-message" for="message"
+                                    class="block text-sm font-medium text-white"></label>
+                                <textarea id="message" name="message" required rows="6"
+                                    class="mt-2 w-full p-3 rounded-md bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                            </div>
+                        </div>
                     </div>
-            </div>
+
+                    <button type="submit" value="submit" id="submitContact"
+                        class="w-full mt-6 py-3 bg-indigo-600 text-white rounded-md text-lg font-medium hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500">
+                        Enviar Mensaje
+                    </button>
+                    <p id="contact-form-status"></p>
+                </form>
+            </section>
 
 
+            <footer class="w-full mt-10 text-center text-gray-600 dark:text-gray-300">
+                <p class="text-sm">© 2025 Iván Pérez Talavera. Todos los derechos reservados.</p>
+                <p class="text-sm">Desarrollado por mí con amor y dedicación.</p>
 
         </div>
     </main>
-    <script src="js/script.js" defer></script>
-    <script src="js/dictionary.js"></script>
+    <script src="js/script.js" type="module"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
-
 </body>
 
 </html>

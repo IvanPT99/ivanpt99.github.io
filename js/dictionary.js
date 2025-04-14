@@ -1,4 +1,4 @@
-const translations = {
+export const translations = {
     es: {
         "about-title": "Sobre mí",
         "quote": "Soy un desarrollador Full Stack con experiencia en integración tecnológica, migración de código y desarrollo de sistemas empresariales.",
@@ -15,6 +15,15 @@ const translations = {
         "projects-title": "Proyectos",
         "frontend-skills-title": "Tecnologías Front-End",
         "backend-skills-title": "Tecnologías Back-End",
+        "contact-title": "Contacto",
+        "contact-text": "¡Estoy aquí para ayudarte! Si tienes alguna pregunta, no dudes en contactarme.",
+        "form-name": "Nombre",
+        "form-email": "Correo electrónico",
+        "form-message": "Mensaje",
+        "form-phone": "Teléfono",
+        "form-subject": "Asunto",
+        "submitContact": "Enviar mensaje",
+        "number": "Número",
     },
     en: {
         "about-title": "About Me",
@@ -32,5 +41,15 @@ const translations = {
         "projects-title": "Projects",
         "frontend-skills-title": "Front-End Technologies",
         "backend-skills-title": "Back-End Technologies",
+        "contact-title": "Contact",
+        "contact-text": "I'm here to help! If you have any questions, feel free to send me a mail.",
+        "form-name": "Name",
+        "form-email": "Email",
+        "form-message": "Message",
+        "form-phone": "Phone",
+        "form-subject": "Subject",
+        "submitContact": "Send message",
+        "number": "Number",
+
     }
 };
