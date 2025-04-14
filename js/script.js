@@ -68,15 +68,19 @@ document.addEventListener("DOMContentLoaded", async function () {
         console.error("Error al cargar los proyectos:", error);
     }
 
+    document.getElementById("close-modal").addEventListener("click", closeModal);
+    document.getElementById("prev-project").addEventListener("click", () => handleProject('prev'));
+    document.getElementById("next-project").addEventListener("click", () => handleProject('next'));
+
     let countryCodeselect = document.getElementById("countryCodeSelect");
 
     countries.forEach((country) => {
         let option = document.createElement("option");
         option.value = country.value;
         option.textContent = country.name;
-        option.setAttribute("data-countryCode", country.code); 
+        option.setAttribute("data-countryCode", country.code);
         countryCodeselect.appendChild(option);
-      });
+    });
 
     let contactForm = document.getElementById("contact-form");
 
@@ -85,29 +89,29 @@ document.addEventListener("DOMContentLoaded", async function () {
         let status = document.getElementById("contact-form-status");
         let data = new FormData(event.target);
         fetch(event.target.action, {
-          method: contactForm.method,
-          body: data,
-          headers: {
-              'Accept': 'application/json'
-          }
+            method: contactForm.method,
+            body: data,
+            headers: {
+                'Accept': 'application/json'
+            }
         }).then(response => {
-          if (response.ok) {
-            status.innerHTML = "Thanks for your submission!";
-            contactForm.reset()
-          } else {
-            response.json().then(data => {
-              if (Object.hasOwn(data, 'errors')) {
-                status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
-              } else {
-                status.innerHTML = "Oops! There was a problem submitting your form"
-              }
-            })
-          }
+            if (response.ok) {
+                status.innerHTML = "Thanks for your submission!";
+                contactForm.reset()
+            } else {
+                response.json().then(data => {
+                    if (Object.hasOwn(data, 'errors')) {
+                        status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+                    } else {
+                        status.innerHTML = "Oops! There was a problem ºsubmitting your form"
+                    }
+                })
+            }
         }).catch(error => {
-          status.innerHTML = "Oops! There was a problem submitting your form"
+            status.innerHTML = "Oops! There was a problem submitting your form"
         });
-      }
-      contactForm.addEventListener("submit", handleSubmit)
+    }
+    contactForm.addEventListener("submit", handleSubmit)
 });
 
 function changeLanguage(lang, animation) {
@@ -161,17 +165,18 @@ async function createCarouselItems(lang) {
             img.alt = project.title;
             img.classList.add(
                 "w-full",
+                "aspect-video",
                 "object-cover",
-                "cursor-pointer",           
+                "cursor-pointer",
                 "transition-transform",
                 "duration-300",
-                "hover:scale-105",           
-                "hover:opacity-90"           
+                "hover:scale-105",
+                "hover:opacity-90"
             );
 
             let content = document.createElement("div");
             content.classList.add("absolute", "bottom-0", "left-0", "w-full", "bg-black", "bg-opacity-50", "hidden", "md:block");
-            content.style.padding = "20px"; 
+            content.style.padding = "20px";
 
             let textContent = document.createElement("div");
             textContent.classList.add("text-center", "text-white");
@@ -262,11 +267,11 @@ function openProjectModal(index) {
         modalSkills.appendChild(categoryDiv);
     });
 
-    if (project.links) {    
+    if (project.links) {
         let hasFrontend = null;
         let hasBackend = null;
         let hasWebsite = null;
-    
+
         project.links.forEach(link => {
             if (link["front-end"]) {
                 hasFrontend = link["front-end"];
@@ -278,15 +283,15 @@ function openProjectModal(index) {
                 hasWebsite = link["website"];
             }
         });
-    
+
         if (hasFrontend || hasBackend || hasWebsite) {
-            
-            linksContainer.classList.remove("hidden"); 
-            
+
+            linksContainer.classList.remove("hidden");
+
             if (hasFrontend || hasBackend) {
                 let buttonWrapper = document.createElement("div");
                 buttonWrapper.classList.add("flex", "w-full", "gap-4", "mb-1");
-    
+
                 if (hasFrontend) {
                     let frontendButton = document.createElement("a");
                     frontendButton.href = hasFrontend;
@@ -295,7 +300,7 @@ function openProjectModal(index) {
                     frontendButton.classList.add("py-2", "px-4", "rounded", "bg-blue-500", "text-white", "hover:bg-blue-600", "flex-1");
                     buttonWrapper.appendChild(frontendButton);
                 }
-    
+
                 if (hasBackend) {
                     let backendButton = document.createElement("a");
                     backendButton.href = hasBackend;
@@ -306,7 +311,7 @@ function openProjectModal(index) {
                 }
                 linksContainer.appendChild(buttonWrapper);
             }
-    
+
             if (hasWebsite) {
                 let websiteContainer = document.createElement("div");
                 websiteContainer.classList.add("flex", "w-full", "gap-4");
@@ -322,11 +327,11 @@ function openProjectModal(index) {
             linksContainer.classList.add("hidden");
         }
     }
-    
+
     if ($(modalGallery).hasClass('slick-initialized')) {
         $(modalGallery).slick('unslick');
     }
-    
+
     $(modalGallery).slick({
         infinite: true,
         slidesToShow: 1,
@@ -335,7 +340,7 @@ function openProjectModal(index) {
         dots: true,
         appendDots: $(modalGallery),
         prevArrow: '<button type="button" class="slick-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow bg-gray-800 bg-opacity-60 hover:bg-gray-700 flex items-center justify-center"><span class="sr-only">Previous</span>←</button>',
-        nextArrow: '<button type="button" class="slick-next absolute top-1/2 right-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow bg-gray-800 bg-opacity-60 hover:bg-gray-700 flex items-center justify-center"><span class="sr-only">Next</span>→</button>',        
+        nextArrow: '<button type="button" class="slick-next absolute top-1/2 right-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow bg-gray-800 bg-opacity-60 hover:bg-gray-700 flex items-center justify-center"><span class="sr-only">Next</span>→</button>',
         responsive: [
             {
                 breakpoint: 1024,
