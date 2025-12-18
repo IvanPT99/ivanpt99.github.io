@@ -47,15 +47,22 @@ document.addEventListener("DOMContentLoaded", async function () {
             slidesToShow: 1,
             slidesToScroll: 1,
             arrows: true,
-            prevArrow: '<button type="button" class="slick-prev">←</button>',
-            nextArrow: '<button type="button" class="slick-next">→</button>',
+            prevArrow: '<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg></button>',
+            nextArrow: '<button type="button" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></button>',
             dots: true,
             autoplay: true,
-            autoplaySpeed: 10000,
+            autoplaySpeed: 7000,
             swipe: true,
-            touchThreshold: 50,
-            speed: 1000,
+            touchThreshold: 10,
+            speed: 600,
             draggable: true,
+            cssEase: 'ease-in-out',
+            pauseOnHover: true,
+            pauseOnFocus: true,
+            adaptiveHeight: true,
+            lazyLoad: 'progressive',
+            useTransform: true,
+            waitForAnimate: true,
         });
 
 
@@ -168,14 +175,26 @@ async function createCarouselItems(lang) {
                 "aspect-video",
                 "object-cover",
                 "cursor-pointer",
-                "transition-transform",
-                "duration-300",
-                "hover:scale-105",
-                "hover:opacity-90"
+                "transition-all",
+                "duration-500",
+                "ease-out"
             );
 
             let content = document.createElement("div");
-            content.classList.add("absolute", "bottom-0", "left-0", "w-full", "bg-black", "bg-opacity-50", "hidden", "md:block");
+            content.classList.add(
+                "absolute",
+                "bottom-0",
+                "left-0",
+                "w-full",
+                "bg-gradient-to-t",
+                "from-black/80",
+                "via-black/50",
+                "to-transparent",
+                "hidden",
+                "md:block",
+                "transition-all",
+                "duration-300"
+            );
             content.style.padding = "20px";
 
             let textContent = document.createElement("div");
@@ -339,21 +358,30 @@ function openProjectModal(index) {
         arrows: true,
         dots: true,
         appendDots: $(modalGallery),
-        prevArrow: '<button type="button" class="slick-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow bg-gray-800 bg-opacity-60 hover:bg-gray-700 flex items-center justify-center"><span class="sr-only">Previous</span>←</button>',
-        nextArrow: '<button type="button" class="slick-next absolute top-1/2 right-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow bg-gray-800 bg-opacity-60 hover:bg-gray-700 flex items-center justify-center"><span class="sr-only">Next</span>→</button>',
+        prevArrow: '<button type="button" class="slick-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow bg-gray-800 bg-opacity-60 hover:bg-gray-700 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg></button>',
+        nextArrow: '<button type="button" class="slick-next absolute top-1/2 right-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow bg-gray-800 bg-opacity-60 hover:bg-gray-700 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></button>',
+        speed: 500,
+        cssEase: 'ease-in-out',
+        fade: true,
+        adaptiveHeight: false,
+        swipe: true,
+        touchThreshold: 10,
+        waitForAnimate: true,
         responsive: [
             {
                 breakpoint: 1024,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    arrows: true
                 }
             },
             {
                 breakpoint: 600,
                 settings: {
                     slidesToShow: 1,
-                    slidesToScroll: 1
+                    slidesToScroll: 1,
+                    arrows: true
                 }
             }
         ]

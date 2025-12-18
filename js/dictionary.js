@@ -3,11 +3,13 @@ export const translations = {
         "about-title": "Sobre mí",
         "quote": "Soy un desarrollador Full Stack con experiencia en integración tecnológica, migración de código y desarrollo de sistemas empresariales.",
         "about-text": `
-            <p>Tras casi un año como Full-Stack Developer, en 2024 solicité una Working Holiday Visa para Australia en busca de nuevas experiencias. Mientras esperaba la aprobación en Bangkok, trabajé en un proyecto freelance desarrollando un ERP.</p><br>
+            <p>Soy desarrollador full stack con especialización en AEM (Adobe Experience Manager), trabajando actualmente en proyectos empresariales de gran escala. Mi stack principal incluye AEM, Java con Spring Boot, Vue 3 y Angular, participando activamente tanto en el desarrollo de front-end como de back-end, arquitectura e integraciones.</p><br>
             
-            <p>En Australia, enfrenté desafíos para encontrar trabajo en mi sector, lo que me llevó a replantear mi enfoque y complementar mis estudios con un Grado Superior en Desarrollo de Aplicaciones Multiplataforma.</p><br>
+            <p>Además del trabajo en empresa, he desarrollado proyectos de gestión empresarial completos por iniciativa propia, como ERP y EMS, encargándome del diseño de la arquitectura, la implementación del back-end y front-end, el modelado de datos y los sistemas de permisos. Estos proyectos me han permitido abordar aplicaciones complejas de principio a fin, tomando decisiones técnicas y estructurales con criterio.</p><br>
             
-            <p>Apasionado por la programación, los videojuegos y la exploración de nuevas culturas, mi objetivo es seguir creciendo como desarrollador y aplicar mis conocimientos en proyectos de impacto.</p>
+            <p>También tengo experiencia con .NET (C#) y Flutter, entre otros lenguajes con los que no suelo trabajar, lo que me da una visión amplia del desarrollo de software y una gran capacidad de adaptación a nuevos stacks y tecnologías.</p><br>
+            
+            <p>Más allá del código, me interesa el emprendimiento: desde desarrollo web/apps para particulares hasta proyectos de reventa, edición de video o cualquier cosa que combine creatividad con ejecución y lo disfrute. Busco seguir creciendo en proyectos ambiciosos dentro de empresas sólidas, mientras construyo mis propios negocios paralelos.</p>
         `,
         "cv-button": "Descargar CV",
         "projects-about": `
@@ -29,11 +31,13 @@ export const translations = {
         "about-title": "About Me",
         "quote": "I'm a Full Stack developer with experience in technology integration, code migration, and enterprise systems development.",
         "about-text": `
-            <p>After almost a year as a Full-Stack Developer, in 2024 I applied for a Working Holiday Visa for Australia to seek new experiences. While waiting for approval in Bangkok, I worked on a freelance project developing an ERP.</p><br>
+            <p>I'm a full-stack developer specializing in AEM (Adobe Experience Manager), currently working on large-scale enterprise projects. My main stack includes AEM, Java with Spring Boot, Vue 3, and Angular, actively participating in front-end and back-end development, architecture, and integrations.</p><br>
             
-            <p>In Australia, I faced challenges finding a job in my field, which led me to rethink my approach and complement my studies with an Associate Degree in Application Development.</p><br>
+            <p>Beyond corporate work, I've developed complete business management projects on my own initiative, such as ERP and EMS systems, handling architecture design, back-end and front-end implementation, data modeling, and permission systems. These projects have allowed me to tackle complex applications end-to-end, making technical and structural decisions with solid judgment.</p><br>
             
-            <p>Passionate about programming, video games, and exploring new cultures, my goal is to keep growing as a developer and apply my knowledge to impactful projects.</p>
+            <p>I also have experience with .NET (C#) and Flutter, among other languages I don't regularly work with, giving me a broad view of software development and strong adaptability to new stacks and technologies.</p><br>
+            
+            <p>Beyond code, I'm interested in entrepreneurship: from web/app development for individuals to resale projects, video editing, or anything that combines creativity with execution and I enjoy. I seek to keep growing in ambitious projects within solid companies, while building my own parallel businesses.</p>
         `,
         "cv-button": "Download CV",
         "projects-about": `
