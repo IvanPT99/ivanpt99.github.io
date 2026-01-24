@@ -1,3 +1,80 @@
+/* ===========================================
+   ESTILOS GLOBALES - CYBERPUNK THEME
+   =========================================== */
+
+body {
+    background: linear-gradient(180deg,
+        #2d1f3d 0%,
+        #1a1025 25%,
+        #0a1815 50%,
+        #0f3d22 75%,
+        #1a6b3a 100%) !important;
+    min-height: 100vh;
+}
+
+/* Selector de idioma */
+#language-selector {
+    background: var(--purple-mid) !important;
+    border: 1px solid var(--border-purple);
+}
+
+#language-selector:focus {
+    box-shadow: var(--glow-purple);
+}
+
+/* Título principal */
+#presentation h1 {
+    background: linear-gradient(135deg, #c084fc 0%, #a855f7 60%, #22c55e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Quote */
+#quote {
+    border-color: #22c55e !important;
+}
+
+/* Secciones */
+#about {
+    background: linear-gradient(180deg,
+        rgba(26, 16, 37, 0.8) 0%,
+        rgba(15, 15, 20, 0.85) 50%,
+        rgba(15, 40, 25, 0.8) 100%) !important;
+    border: 1px solid var(--border-purple);
+    border-bottom-color: var(--border-green);
+    backdrop-filter: blur(10px);
+}
+
+#contact {
+    background: linear-gradient(180deg, rgba(26, 16, 37, 0.7) 0%, rgba(10, 26, 18, 0.7) 100%) !important;
+    border: 1px solid var(--border-purple);
+    backdrop-filter: blur(10px);
+}
+
+/* Títulos de secciones */
+#about-title, #contact-title, #projects-title {
+    color: #ffffff;
+}
+
+#experience-title {
+    background: linear-gradient(135deg, #c084fc 0%, #22c55e 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Links sociales */
+#presentation a {
+    border: 1px solid var(--border-purple) !important;
+    transition: all 0.3s ease;
+}
+
+#presentation a:hover {
+    box-shadow: var(--glow-purple), 0 0 10px rgba(34, 197, 94, 0.2);
+    border-color: #22c55e !important;
+}
+
 /* Carousel Styles */
 .slick-slide .absolute.bg-black.bg-opacity-50 {
     transition: all 0.3s ease-in-out;
@@ -48,7 +125,7 @@
     transform: translate(-50%, -50%);
     width: 10px;
     height: 10px;
-    border: 2px solid rgba(255, 255, 255, 0.7);
+    border: 2px solid var(--border-purple);
     border-radius: 50%;
     opacity: 1;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -58,24 +135,24 @@
 #projects-carousel .slick-dots li.slick-active button::before {
     width: 14px;
     height: 14px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-color: white;
-    box-shadow: 0 0 15px rgba(102, 126, 234, 0.8), 0 0 30px rgba(118, 75, 162, 0.4);
+    background: var(--purple-base);
+    border-color: var(--purple-light);
+    box-shadow: var(--glow-purple);
     animation: pulse 2s ease-in-out infinite;
 }
 
 #projects-carousel .slick-dots li:hover button::before {
-    border-color: white;
-    background-color: rgba(255, 255, 255, 0.3);
+    border-color: var(--purple-light);
+    background-color: rgba(168, 85, 247, 0.3);
     transform: translate(-50%, -50%) scale(1.15);
 }
 
 @keyframes pulse {
     0%, 100% {
-        box-shadow: 0 0 15px rgba(102, 126, 234, 0.8), 0 0 30px rgba(118, 75, 162, 0.4);
+        box-shadow: var(--glow-purple);
     }
     50% {
-        box-shadow: 0 0 20px rgba(102, 126, 234, 1), 0 0 40px rgba(118, 75, 162, 0.6);
+        box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
     }
 }
 
@@ -85,7 +162,8 @@
     width: 50px;
     height: 50px;
     z-index: 10;
-    background: rgba(79, 70, 229, 0.8);
+    background: rgba(168, 85, 247, 0.8);
+    border: 1px solid var(--border-purple);
     border-radius: 50%;
     transition: all 0.3s ease;
     display: flex !important;
@@ -95,8 +173,9 @@
 
 #projects-carousel .slick-prev:hover,
 #projects-carousel .slick-next:hover {
-    background: rgba(79, 70, 229, 1);
-    box-shadow: 0 0 20px rgba(79, 70, 229, 0.6);
+    background: var(--purple-base);
+    border-color: var(--purple-light);
+    box-shadow: var(--glow-purple);
 }
 
 #projects-carousel .slick-prev:hover svg,
@@ -174,15 +253,16 @@
 }
 
 #projects-carousel .slick-slide:hover .absolute {
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.6), transparent);
+    background: linear-gradient(to top, rgba(13, 10, 18, 0.95), rgba(26, 16, 37, 0.7), transparent);
     backdrop-filter: blur(10px);
 }
 
 /* Mejora visual del contenedor del carousel */
 #projects-carousel {
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     border-radius: 16px;
     overflow: hidden;
+    border: 2px solid var(--border-purple);
 }
 
 /* Animación de los textos */
@@ -276,7 +356,7 @@
 }
 
 #modal-gallery .slick-dots li.slick-active button::before {
-    color: #667eea;
+    color: #22c55e;
     opacity: 1;
     transform: scale(1.4);
 }
@@ -289,14 +369,24 @@
 /* Botones del carousel del modal */
 #modal-gallery .slick-prev,
 #modal-gallery .slick-next {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
     z-index: 20;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     display: flex !important;
     align-items: center;
     justify-content: center;
-    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#modal-gallery .slick-prev {
+    left: 15px;
+}
+
+#modal-gallery .slick-next {
+    right: 15px;
 }
 
 #modal-gallery .slick-prev::before,
@@ -306,8 +396,8 @@
 
 #modal-gallery .slick-prev:hover,
 #modal-gallery .slick-next:hover {
-    background-color: rgba(79, 70, 229, 0.9);
-    box-shadow: 0 0 15px rgba(79, 70, 229, 0.6);
+    background: rgba(168, 85, 247, 0.9);
+    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
 }
 
 #modal-gallery .slick-prev svg,
@@ -315,12 +405,7 @@
     width: 20px;
     height: 20px;
     color: white;
-    transition: transform 0.3s ease;
-}
-
-#modal-gallery .slick-prev:hover svg,
-#modal-gallery .slick-next:hover svg {
-    transform: scale(1.2);
+    stroke: white;
 }
 
 /* Transiciones suaves para las imágenes del modal */
@@ -330,44 +415,66 @@
 
 /* Mejoras generales del modal */
 #project-modal {
-    padding: 20px;
+    padding: 8px;
 }
 
-#project-modal > div {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    max-height: 90vh;
+/* Galería del modal - layout vertical */
+#modal-gallery {
+    overflow: hidden;
 }
 
-/* Mejora del área de contenido del modal */
-#modal-text {
-    background: linear-gradient(135deg, rgba(31, 41, 55, 0.95) 0%, rgba(17, 24, 39, 0.98) 100%);
-    backdrop-filter: blur(10px);
+#modal-gallery .slick-list,
+#modal-gallery .slick-track {
+    height: 100%;
+}
+
+#modal-gallery .slick-slide {
+    height: 100%;
+}
+
+#modal-gallery .slick-slide > div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+#modal-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    max-height: calc(35vh - 20px);
+}
+
+@media (min-width: 768px) {
+    #modal-gallery img {
+        max-height: calc(45vh - 20px);
+    }
 }
 
 /* Botón de cerrar mejorado */
 #close-modal {
-    width: 40px;
-    height: 40px;
-    background: rgba(239, 68, 68, 0.8);
+    width: 32px;
+    height: 32px;
+    background: rgba(239, 68, 68, 0.9);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
-    line-height: 1;
-    transition: all 0.3s ease;
+    color: white;
+    transition: all 0.2s ease;
     cursor: pointer;
 }
 
 #close-modal:hover {
     background: rgba(239, 68, 68, 1);
-    transform: rotate(90deg) scale(1.1);
-    box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+    transform: scale(1.1);
 }
 
 /* Mejora de los títulos del modal */
 #modal-title {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #22c55e 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -375,110 +482,133 @@
 
 /* Mejora de las skills chips */
 .skill-chip {
-    border: 1px solid rgba(102, 126, 234, 0.3);
-    transition: all 0.3s ease;
+    border: 1px solid var(--border-purple);
+    background: rgba(168, 85, 247, 0.1) !important;
+    transition: all 0.2s ease;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
 }
 
 .skill-chip:hover {
-    background-color: rgba(102, 126, 234, 0.2) !important;
-    border-color: rgba(102, 126, 234, 0.6);
-    transform: translateX(5px);
+    background: rgba(168, 85, 247, 0.2) !important;
+    border-color: var(--purple-base);
 }
 
-/* Botones de navegación entre proyectos mejorados */
-#prev-project,
-#next-project {
-    width: 50px;
-    height: 50px;
-    background: rgba(79, 70, 229, 0.9);
+/* Links del modal */
+#modal-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+#modal-links a:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Botones de navegación entre proyectos */
+.nav-btn {
+    width: 44px;
+    height: 44px;
+    background: rgba(168, 85, 247, 0.7);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    transition: all 0.3s ease;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    top: 50%;
-    transform: translateY(-50%);
+    transition: all 0.2s ease;
+    border: 2px solid rgba(34, 197, 94, 0.5);
+    cursor: pointer;
+    color: white;
 }
 
-#prev-project {
-    left: -60px;
+.nav-btn:hover {
+    background: var(--purple-base);
+    box-shadow: var(--glow-purple), 0 0 15px rgba(34, 197, 94, 0.3);
+    border-color: #22c55e;
+    transform: scale(1.1);
 }
 
-#next-project {
-    right: -60px;
-}
-
-#prev-project:hover,
-#next-project:hover {
-    background: rgba(79, 70, 229, 1);
-    box-shadow: 0 0 25px rgba(79, 70, 229, 0.8);
-    border-color: rgba(255, 255, 255, 0.4);
-}
-
-/* Responsividad para los botones de navegación del modal */
-@media (max-width: 768px) {
-    #prev-project,
-    #next-project {
-        width: 40px;
-        height: 40px;
-        font-size: 20px;
-    }
-
-    #prev-project {
-        left: -50px;
-    }
-
-    #next-project {
-        right: -50px;
-    }
+.nav-btn:active {
+    transform: scale(0.95);
 }
 
 @media (max-width: 640px) {
-    #prev-project,
-    #next-project {
-        width: 35px;
-        height: 35px;
-        font-size: 18px;
+    .nav-btn {
+        width: 36px;
+        height: 36px;
     }
 
-    #prev-project {
-        left: 5px;
+    .nav-btn svg {
+        width: 18px;
+        height: 18px;
     }
+}
 
-    #next-project {
-        right: 5px;
-    }
+/* Contenedor del modal */
+#modal-content {
+    background: linear-gradient(180deg, #1a1025 0%, #0f0f1a 40%, #0a1a12 100%);
+    border: 2px solid var(--purple-base);
+    border-bottom-color: var(--green-accent);
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.7),
+        0 -5px 30px rgba(168, 85, 247, 0.35),
+        0 5px 30px rgba(34, 197, 94, 0.35),
+        inset 0 -80px 80px -80px rgba(34, 197, 94, 0.15);
+}
+
+/* Scrollbar personalizado del modal */
+#modal-text {
+    scrollbar-width: thin;
+    scrollbar-color: var(--purple-base) rgba(15, 15, 20, 0.5);
+}
+
+#modal-text::-webkit-scrollbar {
+    width: 8px;
+}
+
+#modal-text::-webkit-scrollbar-track {
+    background: rgba(15, 15, 20, 0.5);
+    border-radius: 4px;
+}
+
+#modal-text::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, var(--purple-base) 0%, var(--green-accent) 100%);
+    border-radius: 4px;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+}
+
+#modal-text::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, var(--purple-light) 0%, var(--neon-green) 100%);
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.5);
+}
+
+/* Indicador de scroll */
+#modal-text {
+    position: relative;
+    box-shadow: inset 0 -25px 25px -25px rgba(34, 197, 94, 0.5);
 }
 
 /* Responsividad adicional para el modal */
-@media (max-width: 1024px) {
-    #project-modal > div {
-        width: 98%;
-        max-height: 95vh;
-    }
-
-    #modal-text {
-        padding: 1.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-    #project-modal {
-        padding: 10px;
-    }
-
+@media (max-width: 640px) {
     #modal-gallery .slick-prev,
     #modal-gallery .slick-next {
-        width: 35px;
-        height: 35px;
+        width: 28px;
+        height: 28px;
     }
 
     #modal-gallery .slick-prev svg,
     #modal-gallery .slick-next svg {
-        width: 16px;
-        height: 16px;
+        width: 12px;
+        height: 12px;
+    }
+
+    #modal-skills {
+        grid-template-columns: 1fr !important;
     }
 }
 

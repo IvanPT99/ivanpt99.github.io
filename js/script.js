@@ -244,7 +244,7 @@ function openProjectModal(index) {
     project.gallery.forEach((image) => {
         let img = document.createElement("img");
         img.src = image;
-        img.classList.add("object-cover", "rounded-t-lg", "lg:rounded-l-lg");
+        img.classList.add("w-full", "h-full", "object-contain");
         modalGallery.appendChild(img);
     });
 
@@ -358,15 +358,15 @@ function openProjectModal(index) {
         arrows: true,
         dots: true,
         appendDots: $(modalGallery),
-        prevArrow: '<button type="button" class="slick-prev absolute top-1/2 left-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow bg-gray-800 bg-opacity-60 hover:bg-gray-700 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg></button>',
-        nextArrow: '<button type="button" class="slick-next absolute top-1/2 right-4 transform -translate-y-1/2 z-10 text-white p-4 rounded-full slick-arrow bg-gray-800 bg-opacity-60 hover:bg-gray-700 flex items-center justify-center"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg></button>',
-        speed: 500,
-        cssEase: 'ease-in-out',
+        prevArrow: '<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" /></svg></button>',
+        nextArrow: '<button type="button" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg></button>',
+        speed: 250,
+        cssEase: 'ease-out',
         fade: true,
         adaptiveHeight: false,
         swipe: true,
         touchThreshold: 10,
-        waitForAnimate: true,
+        waitForAnimate: false,
         responsive: [
             {
                 breakpoint: 1024,
