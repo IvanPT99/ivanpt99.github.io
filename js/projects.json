@@ -100,7 +100,11 @@
             ]
         },
         "gallery": [
-            "media/ipt-emsy/ipt-emsy1.png"
+            "media/ipt-ems/ipt-ems1.png",
+            "media/ipt-ems/ipt-ems2.png",
+            "media/ipt-ems/ipt-ems3.png",
+            "media/ipt-ems/ipt-ems4.png",
+            "media/ipt-ems/ipt-ems5.png"
         ]
     }
 ]
