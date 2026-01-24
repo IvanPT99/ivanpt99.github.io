@@ -74,15 +74,15 @@
         ]
     }, 
     {
-        "title": "Offibay",
+        "title": "IPT Solutions EMS",
         "description": {
             "short": {
-                "es": "Offibay es un EMS desarrollado para gestionar proyectos, equipos y la facturación de los mismos.",
-                "en": "Offibay is an EMS developed to manage projects, teams, and their billing."
+                "es": "EMS desarrollado para gestionar proyectos, equipos y la facturación de los mismos.",
+                "en": "An EMS developed to manage projects, teams, and their billing."
             },
             "long": {
-                "es": "Offibay fue una herramienta desarrollada en mi última empresa para gestionar de manera eficiente los proyectos, equipos de trabajo y la facturación de los proyectos. El sistema permite a los usuarios administrar el flujo de trabajo desde la creación de un proyecto hasta la facturación de los servicios prestados.",
-                "en": "Offibay was a tool developed in my last company to efficiently manage projects, teams, and project billing. The system allows users to manage the workflow from project creation to billing for services rendered."
+                "es": "PT Solutions EMS es una plataforma empresarial diseñada para la gestión integral de proyectos, equipos de trabajo y facturación. Permite administrar de forma eficiente todo el flujo de trabajo, desde la creación y planificación de proyectos hasta el control de horas, asignación de recursos y facturación de los servicios prestados.",
+                "en": "IPT Solutions EMS is an enterprise platform designed for the comprehensive management of projects, teams, and billing processes. It enables efficient control of the entire workflow, from project creation and planning to resource allocation, time tracking, and invoicing of delivered services."
             }
         },
         "skills": {
@@ -100,7 +100,7 @@
             ]
         },
         "gallery": [
-            "media/offibay/offibay1.png"
+            "media/ipt-emsy/ipt-emsy1.png"
         ]
     }
 ]
